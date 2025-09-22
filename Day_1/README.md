@@ -1,3 +1,12 @@
+<div align="center">
+
+![Verilog RTL](https://img.shields.io/badge/Verilog-RTL-blue?style=for-the-badge&logo=verilog&logoColor=white)
+![Yosys Synthesis](https://img.shields.io/badge/Yosys-Synthesis-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white)
+![Icarus Verilog](https://img.shields.io/badge/Icarus-Verilog-orange?style=for-the-badge&logo=gnu&logoColor=white)
+![GTKWave Simulation](https://img.shields.io/badge/GTKWave-Simulation-lightgrey?style=for-the-badge&logo=gnu&logoColor=black)
+
+</div>
+
 #  Day 1: Introduction to Verilog RTL Design & Synthesis
 
 Welcome to **Day 1** of the RTL Workshop!  
