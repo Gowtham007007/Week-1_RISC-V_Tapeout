@@ -98,7 +98,7 @@ gtkwave tb_good_mux.vcd
 ```
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/701e8189-3101-4a82-8134-e799521b9a8b" alt="GTKWave Example" width="70%">
+  <img src="Images/good_mux_waveform.jpeg" alt="Image 1" width="70%"/>
 </div>
 
 ---
@@ -191,7 +191,16 @@ Let’s synthesize the `good_mux` design using Yosys!
     ```
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/4b3a9939-92d0-4efc-ad69-e96faf19e6c3" alt="Yosys Gate-level Schematic" width="70%">
+  <img src="Images/good_mux_netlist.jpeg" alt="Yosys Gate-level Schematic" width="70%">
+</div>
+
+
+7. **Viewing the Netlist generated**
+```shell
+write_verilog -noattr good_mux_netlist.v
+```
+<div align="center">
+  <img src="Images/good_mux_net.jpeg" alt="Yosys Gate-level Schematic" width="70%">
 </div>
 
 ---
