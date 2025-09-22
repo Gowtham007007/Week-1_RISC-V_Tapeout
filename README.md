@@ -1,6 +1,5 @@
 # 🚀 RTL Design And Synthesis Workshop Using Sky130
 
-[![License](https://img.shields.io/badge/License-CC%20BY%204.0-green.svg)](./LICENSE)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 ![Contributions](https://img.shields.io/badge/Contributions-Welcome-blue)
 
@@ -17,9 +16,8 @@
 - [Progress Tracker](#progress-tracker)
 - [Design Flow](#design-flow)
 - [Learning Outcomes](#learning-outcomes)
-- [Author & Mentors](#author--mentors)
+- [Author & Mentor](#author--mentor)
 - [License](#license)
-- [Acknowledgements](#acknowledgements)
 
 ---
 
@@ -72,11 +70,48 @@ The workshop is organized by day, each with its own folder and README:
 - [x] Day 2 - Timing Libraries & Flip-Flops ✅  
 - [ ] Day 3 - Combinational & Sequential Optimization ⏳  
 - [ ] Day 4 - GLS & Synthesis-Simulation Mismatch ❌  
-- [ ] Day 5 - Final Optimization 🏁  
+- [ ] Day 5 - Final Optimization 🏁
 
 ---
 
+##  Design Flow
 
+The RTL design workflow follows these steps:
 
+1. **Verilog RTL Code** – Write your RTL modules.  
+2. **Simulation with Icarus Verilog** – Verify functionality using testbenches.  
+3. **Synthesis using Yosys** – Convert RTL into gate-level netlist.  
+4. **Netlist Generation** – Produce the circuit representation for verification.  
+5. **Gate-Level Simulation (GLS)** – Validate synthesized design.  
+6. **Optimized Design** – Apply optimizations for area, power, and performance.
+
+---
+
+##  Learning Outcomes
+
+By completing this workshop, participants will be able to:
+
+- 🔹 Understand RTL coding practices and design methodology  
+- 🔹 Simulate designs using **Icarus Verilog + GTKWave**  
+- 🔹 Perform synthesis using **Yosys + SKY130 PDK**  
+- 🔹 Debug synthesis-simulation mismatches  
+- 🔹 Optimize designs for **power, performance, and area (PPA)**  
+
+> 💡 **Pro Tip:** Always separate testbenches from design code for clarity.  
+
+---
+
+##  Author & Mentor
+
+| Name | Role | Profile |
+|------|------|---------|
+| ✍️ Gowtham | Author | ![Author Badge](https://img.shields.io/badge/author-Gowtham-blue) |
+| 🧑‍🏫 Kunal Ghosh | Mentor | [LinkedIn](https://www.linkedin.com/in/kunal-ghosh-vlsisystemdesign-com-28084836/) |
+
+---
+
+##  License
+
+This project is licensed under the **Attribution 4.0 International (CC BY 4.0)** License.  
 
 
