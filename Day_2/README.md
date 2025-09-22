@@ -21,24 +21,25 @@
 
 ## 📂 Contents
 
-- [Timing Libraries](#timing-libraries)
-  - [SKY130 PDK Overview](#sky130-pdk-overview)
-  - [Decoding tt_025C_1v80 in the SKY130 PDK](#decoding-tt_025c_1v80-in-the-sky130-pdk)
-  - [Opening and Exploring the .lib File](#opening-and-exploring-the-lib-file)
+- ⚡ **[Timing Libraries](#timing-libraries)**
+  - 📘 [SKY130 PDK Overview](#sky130-pdk-overview)
+  - 🔍 [Decoding tt_025C_1v80 in the SKY130 PDK](#decoding-tt_025c_1v80-in-the-sky130-pdk)
+  - 📝 [Opening and Exploring the .lib File](#opening-and-exploring-the-lib-file)
 
-- [Hierarchical vs. Flattened Synthesis](#hierarchical-vs-flattened-synthesis)
-  - [Hierarchical Synthesis](#hierarchical-synthesis)
-  - [Flattened Synthesis](#flattened-synthesis)
-  - [Key Differences](#key-differences)
+- 🛠 **[Hierarchical vs. Flattened Synthesis](#hierarchical-vs-flattened-synthesis)**
+  - 🏗 [Hierarchical Synthesis](#hierarchical-synthesis)
+  - 🧩 [Flattened Synthesis](#flattened-synthesis)
+  - ⚖️ [Key Differences](#key-differences)
 
-- [Flip-Flop Coding Styles](#flip-flop-coding-styles)
-  - [Asynchronous Reset D Flip-Flop](#asynchronous-reset-d-flip-flop)
-  - [Asynchronous Set D Flip-Flop](#asynchronous-set-d-flip-flop)
-  - [Synchronous Reset D Flip-Flop](#synchronous-reset-d-flip-flop)
+- 🔹 **[Flip-Flop Coding Styles](#flip-flop-coding-styles)**
+  - ⏱ [Asynchronous Reset D Flip-Flop](#asynchronous-reset-d-flip-flop)
+  - 🔴 [Asynchronous Set D Flip-Flop](#asynchronous-set-d-flip-flop)
+  - ⏹ [Synchronous Reset D Flip-Flop](#synchronous-reset-d-flip-flop)
 
-- [Simulation and Synthesis Workflow](#simulation-and-synthesis-workflow)
-  - [Icarus Verilog Simulation](#icarus-verilog-simulation)
-  - [Synthesis with Yosys](#synthesis-with-yosys)
+- 🖥 **[Simulation and Synthesis Workflow](#simulation-and-synthesis-workflow)**
+  - 💻 [Icarus Verilog Simulation](#icarus-verilog-simulation)
+  - ⚡ [Synthesis with Yosys](#synthesis-with-yosys)
+
 
 ---
 
@@ -73,7 +74,7 @@ To open the sky130_fd_sc_hd__tt_025C_1v80.lib file:
    ```shell
    gedit sky130_fd_sc_hd__tt_025C_1v80.lib
    ```
- ![Screenshot_2025-05-29_11-43-13](https://github.com/user-attachments/assets/0c31ddf8-8a95-44a4-acaa-e1c5f0518425)
+ <img src="Images/libfile.jpeg" alt="Library file" width="70%"/> 
 
 
 ---
@@ -95,7 +96,8 @@ To open the sky130_fd_sc_hd__tt_025C_1v80.lib file:
 - Reporting can require additional configuration.
 
 **Example:**
-![Screenshot_2025-05-29_19-04-48](https://github.com/user-attachments/assets/91f0244a-2c41-42ea-be6f-468880c3af33)
+
+<img src="Images/hierarchical_netlist.jpeg" alt="Hierarchical Netlist" width="70%"/>
 
 
 ---
@@ -116,9 +118,19 @@ To open the sky130_fd_sc_hd__tt_025C_1v80.lib file:
 
 **Example:**
 
-![Screenshot_2025-05-29_19-20-47](https://github.com/user-attachments/assets/e1d94a5d-d3f7-41ee-8e69-ca0c05be81a3)
+
+<img src="Images/flattened.jpeg" alt="Flattened Netlist" width="70%"/>
 
 > **Important:** Hierarchical synthesis maintains sub-modules in the design, while flattening produces a netlist from the ground up.
+
+
+## Multiple_Modulde_Netlist : 
+
+ **Open the Generated Netlist :**
+   ```shell
+   write_verilog -noattr multiple_modules_hier.v
+   ```
+<img src="Images/multiple_module_netlist.jpeg" alt="Multiple Module Netlist" width="70%"/>
 
 ---
 
@@ -197,7 +209,8 @@ endmodule
    ```shell
    gtkwave tb_dff_asyncres.vcd
    ```
-![Screenshot_2025-05-30_10-45-13](https://github.com/user-attachments/assets/1176581e-fd6c-4b71-8af5-5d7d5f6dbcda)
+
+<img src="Images/dff_asyncres.jpeg" alt="Asynch - Reset" width="70%"/>
 
 
 ### Synthesis with Yosys
@@ -230,9 +243,53 @@ endmodule
    ```shell
    show
    ```
-![Screenshot_2025-05-30_11-03-00](https://github.com/user-attachments/assets/fa8337df-e0ec-4b01-9b18-5910768e4421)
+
+<img src="Images/gate_level_netlist.jpeg" alt="Gate Level Netlist" width="70%"/>
+
+8. Similar Examples:
+   
+   i) Asynchronous Set D Flip-Flop :
+   
+   
+   <img src="Images/dff_async_set.jpeg" alt="Asynch - Set" width="70%"/>
+   
+   ii) Synchronous Reset D Flip-Flop :
+   
+   
+   <img src="Images/dff_syncres.jpeg" alt="Synch - Reset" width="70%"/>
+
+   
+
+# Multiple by 8 and its Netlist Generation : 
+
+# 7️ Viewing the Generated Netlist
+
+Once you synthesize your design (e.g., an 8-bit multiplier) using **Yosys**, you can export the netlist:
+
+```shell
+write_verilog -noattr mul_by_8_netlist.v
+
+```
+
+```verilog
+module mul_by_8 (input [7:0] a, input [7:0] b, output [15:0] y);
+  wire _0_, _1_, _2_, _3_, _4_, _5_;
+
+  // Example internal connections (auto-generated)
+  assign _0_ = a[0] & b[0];
+  assign _1_ = a[1] & b[0];
+  assign _2_ = a[0] & b[1];
+  assign _3_ = _1_ ^ _2_;
+  assign y[0] = _0_;
+  assign y[1] = _3_;
+  // ...
+endmodule
+```
+ Netlist Generated : 
+
+<img src="Images/multiple8.jpeg" alt="Library file" width="70%"/>
 
 
 ---
-## Summary
+# Summary
 This overview provides you with practical insights into timing libraries, synthesis strategies, and reliable coding practices for flip-flops. Continue experimenting with these concepts to deepen your understanding of RTL design and synthesis.
