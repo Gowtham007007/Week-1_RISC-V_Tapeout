@@ -7,24 +7,46 @@
 
 </div>
 
-#  Day 1: Introduction to Verilog RTL Design & Synthesis
+# 🌟 Day 1: Introduction to Verilog RTL Design & Synthesis
 
-Welcome to **Day 1** of the RTL Workshop!  
-Today, you'll embark on your journey into digital design by learning Verilog, open-source simulation with **Icarus Verilog (iverilog)**, and the basics of logic synthesis using **Yosys**. This guide will walk you through practical labs, essential concepts, and insightful explanations to help you build a strong foundation in RTL design.
+<div align="center">
+  <img src="https://img.shields.io/badge/Welcome-to-RTL-Workshop-purple?style=for-the-badge" alt="Welcome Badge"/>
+</div>
+
+> 🎉 Welcome to **Day 1** of the RTL Workshop!  
+> Today, you’ll kickstart your journey into **digital design**, learning:  
+> - **Verilog RTL** coding  
+> - **Open-source simulation** with Icarus Verilog (`iverilog`)  
+> - **Logic synthesis** using Yosys  
+
+> 💡 This guide includes **practical labs, essential concepts, and step-by-step explanations** to help you build a strong foundation in RTL design.
+
+---
+
+## 🗂 Table of Contents
+
+| Section | Topic |
+|---------|-------|
+| 1️⃣ | [What is a Simulator, Design, and Testbench?](#1-what-is-a-simulator-design-and-testbench) |
+| 2️⃣ | [Getting Started with iverilog](#2-getting-started-with-iverilog) |
+| 3️⃣ | [Lab: Simulating a 2-to-1 Multiplexer](#3-lab-simulating-a-2-to-1-multiplexer) |
+| 4️⃣ | [Verilog Code Analysis](#4-verilog-code-analysis) |
+| 5️⃣ | [Introduction to Yosys & Gate Libraries](#5-introduction-to-yosys--gate-libraries) |
+| 6️⃣ | [Synthesis Lab with Yosys](#6-synthesis-lab-with-yosys) |
+| 7️⃣ | [Summary](#7-summary) |
 
 ---
 
-##  Table of Contents
+<div align="center">
 
-1. [What is a Simulator, Design, and Testbench?](#1-what-is-a-simulator-design-and-testbench)
-2. [Getting Started with iverilog](#2-getting-started-with-iverilog)
-3. [Lab: Simulating a 2-to-1 Multiplexer](#3-lab-simulating-a-2-to-1-multiplexer)
-4. [Verilog Code Analysis](#4-verilog-code-analysis)
-5. [Introduction to Yosys & Gate Libraries](#5-introduction-to-yosys--gate-libraries)
-6. [Synthesis Lab with Yosys](#6-synthesis-lab-with-yosys)
-7. [Summary](#7-summary)
+![Getting Started](https://img.shields.io/badge/Let's_Start-Coding-blueviolet?style=for-the-badge&logo=programming&logoColor=white)
 
----
+</div>
+
+> 🚀 Get ready to **write, simulate, and synthesize** your first Verilog circuits!  
+> By the end of Day 1, you'll be confident in **running simulations**, analyzing waveforms, and generating basic gate-level netlists.
+
+
 
 ## 1. What is a Simulator, Design, and Testbench?
 
