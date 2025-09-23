@@ -207,8 +207,10 @@ AND1_clone ---> GateD, GateE, GateF
 ```
 # 4. Retiming
 
- Retiming is a **circuit optimization technique** used in VLSI design to improve **performance, timing, and sometimes power efficiency** by repositioning **registers (flip-flops)** in a sequential circuit without altering its functionality.
---- 
+
+
+  Retiming is a **circuit optimization technique** used in VLSI design to improve **performance, timing, and sometimes power efficiency** by repositioning **registers (flip-flops)** in a sequential circuit without altering its functionality.
+
 
 ## 🔎 How Retiming Works 
 1. **Graph Representation** - Model the sequential circuit as a **directed graph** where nodes represent combinational logic and edges represent registers (flip-flops).
