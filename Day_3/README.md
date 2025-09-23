@@ -7,58 +7,58 @@
 ![Netlist Optimization](https://img.shields.io/badge/Netlist-Optimization-teal?style=for-the-badge)
 ![Verilog Practice](https://img.shields.io/badge/Verilog-Practice-yellow?style=for-the-badge)
 ![Summary Tables](https://img.shields.io/badge/Summary-Tables-pink?style=for-the-badge)
+# 🌟 Welcome to **Day 3** of our Digital Design Journey 🚀  
 
 </div>
 
 
-# 🌟 Welcome to **Day 3** of our Digital Design Journey 🚀  
 
-Hello dear learner 👋,  
+Hello Everyone 👋,  
 Welcome back to **Day 3** of VLSI & Verilog exploration! 💻⚡  
 Today’s session will be filled with **optimization techniques, sequential logic insights, and hands-on Verilog coding** 🎯.  
 
----
+ ---
 
 ## 🎉 What’s Inside Today?  
 
 ✨ **Highlights of Day 3**:  
-- 🔍 Deep Dive into **Constant Propagation** in Sequential Logic  
-- 🛠️ Understanding **Unused Outputs & Their Impact**  
-- 🧩 Netlist-Level Optimizations and Synthesis Flow  
-- 💡 Hands-on **Verilog Code Examples** with Explanations  
-- 📊 Beautiful **Summary Tables** to connect theory ↔️ practice  
+ - 🔍 Deep Dive into **Constant Propagation** in Sequential Logic  
+ - 🛠️ Understanding **Unused Outputs & Their Impact**  
+ - 🧩 Netlist-Level Optimizations and Synthesis Flow  
+ - 💡 Hands-on **Verilog Code Examples** with Explanations  
+ - 📊 Beautiful **Summary Tables** to connect theory ↔️ practice  
 
 ---
 
 ## 📚 Topics We’ll Explore  
 
 🎯 **Optimization Concepts**  
-- 🚦 Constant Propagation (Sequential Logic)  
-- 🗑️ Removal of Unused Outputs  
-- 🔧 Logic Simplification at Netlist Level  
+  - 🚦 Constant Propagation (Sequential Logic)  
+  - 🗑️ Removal of Unused Outputs  
+  - 🔧 Logic Simplification at Netlist Level  
 
-💻 **Verilog Practice**  
-- 📝 Code Example with **Unused Outputs**  
-- 🏗️ Top-Level Integration with Module Instantiations  
+ 💻 **Verilog Practice**  
+  - 📝 Code Example with **Unused Outputs**  
+  - 🏗️ Top-Level Integration with Module Instantiations  
 
-📊 **Analysis & Comparison**  
-- 📑 Summary Tables (Source Code vs Netlist Result)  
-- ⚡ Impact on Area & Power  
+ 📊 **Analysis & Comparison**  
+  - 📑 Summary Tables (Source Code vs Netlist Result)  
+  - ⚡ Impact on Area & Power  
 
----
+ ---
 
-## 🖥️ Learning Style Today  
+ ## 🖥️ Learning Style Today  
 
-🌈 To make your learning more fun:  
-- 🎨 Colorful **Markdown sections** with emojis  
-- 📂 Structured **Table of Contents** for clarity  
-- 💡 Real **Examples + Results** to solidify concepts  
+ 🌈 To make your learning more fun:  
+ - 🎨 Colorful **Markdown sections** with emojis  
+ - 📂 Structured **Table of Contents** for clarity  
+ - 💡 Real **Examples + Results** to solidify concepts  
 
----
+ ---
 
-✨ Get ready, this **Day 3** will not only teach you theory but also show you how it looks in practice with Verilog codes and synthesis results! 🚀  
+ ✨ Get ready, this **Day 3** will not only teach you theory but also show you how it looks in practice with Verilog codes and synthesis results! 🚀  
 
-💪 Let’s begin our journey 👉 **towards smarter digital design!**  
+ 💪 Let’s begin our journey 👉 **towards smarter digital design!**  
 
 
 # 1. Constant Propagation
@@ -83,7 +83,9 @@ Today’s session will be filled with **optimization techniques, sequential logi
 ---
 
 
-## 🟢 Constant Propagation in Combinational Logic In purely **combinational circuits**, constant propagation often leads to **gate elimination**. ### Example:
+## 🟢 Constant Propagation in Combinational Logic In purely **combinational circuits**, constant propagation often leads to **gate elimination**.
+
+### Example:
 ```verilog
 assign y = a & 1'b0;  // ANDing with 0
 ```
@@ -205,7 +207,7 @@ AND1_clone ---> GateD, GateE, GateF
 ```
 # 4. Retiming
 
-Retiming is a **circuit optimization technique** used in VLSI design to improve **performance, timing, and sometimes power efficiency** by repositioning **registers (flip-flops)** in a sequential circuit without altering its functionality.
+ Retiming is a **circuit optimization technique** used in VLSI design to improve **performance, timing, and sometimes power efficiency** by repositioning **registers (flip-flops)** in a sequential circuit without altering its functionality.
 --- 
 
 ## 🔎 How Retiming Works 
@@ -544,32 +546,34 @@ assign y = used_signal;
 
 endmodule
 ```
-In the top module, unused_out from the submodule is **not connected** to anything and not used in further logic. The synthesis tool **removes any hardware** solely responsible for driving unused_out, unless forced otherwise (some tools can drive it to zero). 
+
+
+ In the top module, unused_out from the submodule is **not connected** to anything and not used in further logic. The synthesis tool **removes any hardware** solely responsible for driving unused_out, unless forcedotherwise (some tools can drive it to zero). 
 --- 
 ## 🔹 Netlist Behavior with Unused Outputs 
-- During **netlist generation**, logic driving unused outputs is detected and typically **eliminated**, reducing gate count and optimizing area and power.
-- Only connections that influence **used outputs** (used_out) are maintained.
-- Logic for unused_out is **omitted** unless specifically constrained or forced to remain.
-- Warnings may be issued about unused outputs, but **physical resources are saved**.
+ - During **netlist generation**, logic driving unused outputs is detected and typically **eliminated**, reducing gate count and optimizing area and power.
+ - Only connections that influence **used outputs** (used_out) are maintained.
+ - Logic for unused_out is **omitted** unless specifically constrained or forced to remain.
+ - Warnings may be issued about unused outputs, but **physical resources are saved**.
 
 
 # Example of Demonstrating Unused Outputs
 
 # Verilog Code : 
 
-![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_code.png)
+ ![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_code.png)
 
 Code 2 : 
 
-![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2code.png) 
+ ![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2code.png) 
 
 # Waveform : 
 
-![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_wave.png)
+ ![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_wave.png)
 
 # Netlist : 
 
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2.png)
+ ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2.png)
 
 ---
 
