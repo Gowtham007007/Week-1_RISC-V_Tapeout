@@ -42,6 +42,10 @@ The OR gate is removed, and z is tied to constant logic 1.
 
 Result: Entire gates or paths are deleted, saving area and improving timing.
 
+Example of demoonstrating Constant Propogation :
+
+
+
 ## 🔵 Constant Propagation in Sequential Logic
 
 In sequential circuits, constant propagation can simplify state machines or flip-flop behavior when certain inputs or control signals are fixed.
@@ -60,7 +64,7 @@ end
 
 * The synthesis tool recognizes this and optimizes q to simply hold its value, possibly removing redundant hardware.
 
-Another Case :
+Disabled Counter :
 
 ```verilog
   reg enable = 1'b0;
@@ -69,15 +73,41 @@ Another Case :
         count <= count + 1;
   end
 ```
-
 * Since enable is a constant 0, the counter never increments.
 
 * The entire counter logic can be eliminated.
 
-Result: Reduces unnecessary flip-flops and sequential logic, lowering area and power.
+Constant Input to State Machine :
 
-Example of demoonstrating Constant Propogation :
-<img src="Images/Constant-propagation.png" alt="Constant Propagation Diagram" width="70%"/>
+```verilog
+always @(posedge clk) begin
+    case(state)
+        IDLE: if (start == 1'b0) next_state <= IDLE;
+        ...
+    endcase
+end
+```
+* If start is always 0, the transition to other states can never happen.
+
+* The synthesis tool optimizes the state machine by removing unreachable states, reducing area and power.
+
+ # Benefits in Sequential Logic
+
+ 1.Reduces area: Unused flip-flops and registers are removed.
+
+ 2.Reduces power consumption: Fewer gates switching.
+
+ 3.Improves timing: Shorter critical paths by removing unnecessary logic.
+
+ 4.Simplifies verification: Less logic to simulate and verify.
+
+ 5.Result: Reduces unnecessary flip-flops and sequential logic, lowering area and power.
+
+ <img src="Images/Constant-propagation.png" alt="Constant Propagation Diagram" width="70%"/>
+
+
+
+
 
 
 
