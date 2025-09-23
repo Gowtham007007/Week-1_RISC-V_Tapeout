@@ -1,4 +1,3 @@
-
 <div align="center">
 
 ![Timing](https://img.shields.io/badge/Timing-Libraries-blue?style=for-the-badge)
@@ -6,16 +5,21 @@
 ![Flip-Flop](https://img.shields.io/badge/Flip--Flop-Coding-orange?style=for-the-badge)
 ![Icarus-Verilog](https://img.shields.io/badge/Icarus--Verilog-Simulation-lightgrey?style=for-the-badge)
 
-
 </div>
 
+# 🌟 Welcome to Day 2 of the RTL Workshop!  
 
-# 🕒 Day 2: Timing Libraries, Synthesis Approaches, and Efficient Flip-Flop Coding
+## 🕒 Topic: Timing Libraries, Synthesis Approaches & Flip-Flop Coding  
 
-> Welcome to **Day 2** of the RTL Workshop! This session covers:
-> - Understanding the `.lib` timing library (`sky130_fd_sc_hd__tt_025C_1v80.lib`)  
-> - Comparing **Hierarchical** vs **Flat Synthesis**  
-> - Efficient coding styles for **Flip-Flops** in RTL  
+👋 **Hello Learner!**  
+We’re excited to have you back on **Day 2** of this RTL journey 🚀.  
+Today, we dive deeper into RTL design, focusing on **timing libraries**, **synthesis styles**, and **efficient flip-flop coding techniques**.  
+
+By the end of this session, you will:  
+✅ Understand the role of `.lib` timing libraries in digital design  
+✅ Compare **Hierarchical vs Flat Synthesis** with clarity  
+✅ Learn efficient RTL styles for **Flip-Flop implementation**  
+✅ Simulate and synthesize designs with **Icarus Verilog** and **Yosys**  
 
 ---
 
@@ -40,8 +44,8 @@
   - 💻 [Icarus Verilog Simulation](#icarus-verilog-simulation)
   - ⚡ [Synthesis with Yosys](#synthesis-with-yosys)
 
-
 ---
+
 
 ## Timing Libraries
 
