@@ -74,12 +74,15 @@ Today’s session will be filled with **optimization techniques, sequential logi
 3. Any gates, flip-flops, or expressions that depend only on this constant are simplified or even **eliminated**.
 4. This process reduces unnecessary computations and makes the final synthesized circuit more efficient.
 --- 
-## ⚡ Benefits of Constant Propagation -
+## ⚡ Benefits of Constant Propagation 
+
 **Reduced Complexity**: Unnecessary gates are removed, making the circuit smaller. 
 - **Performance Improvement**: Critical paths can become shorter, reducing delays.
--  - **Resource Optimization**: Fewer logic resources (gates, LUTs, or flip-flops) are consumed.
-   - - **Lower Power**: Less switching activity means reduced dynamic power consumption.
-     -  ---
+- **Resource Optimization**: Fewer logic resources (gates, LUTs, or flip-flops) are consumed.
+- **Lower Power**: Less switching activity means reduced dynamic power consumption.
+---
+
+
 ## 🟢 Constant Propagation in Combinational Logic In purely **combinational circuits**, constant propagation often leads to **gate elimination**. ### Example:
 ```verilog
 assign y = a & 1'b0;  // ANDing with 0
