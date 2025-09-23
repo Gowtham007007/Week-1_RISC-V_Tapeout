@@ -99,7 +99,11 @@ State optimization is an important technique in **finite state machine (FSM) des
    1. **State Reduction** - Merge **equivalent states** that produce the same outputs for all inputs. - Reduces the total number of states in the FSM, saving flip-flops and combinational logic.
    2. **State Encoding** - Assign **optimal binary codes** to each state to minimize combinational logic complexity. - Common encoding schemes: - Binary Encoding - One-Hot Encoding - Gray Encoding
    3. **Logic Minimization** - Apply **Boolean algebra simplifications** or use synthesis tools to generate **compact logic equations** for next-state and output logic. - Reduces the number of gates required.
-   4. **Power Optimization** - Techniques such as **clock gating** or **signal gating** reduce unnecessary switching activity. - Helps lower **dynamic power consumption** in the FSM. --- ### Example Suppose an FSM has 8 states, but only 4 are functionally distinct. After **state reduction**:
+   4. **Power Optimization** - Techniques such as **clock gating** or **signal gating** reduce unnecessary switching activity. - Helps lower **dynamic power consumption** in the FSM.
+      
+       ---
+      
+ ### Example Suppose an FSM has 8 states, but only 4 are functionally distinct. After **state reduction**:
 ```text
 Original States: S0, S1, S2, S3, S4, S5, S6, S7
 Reduced States: S0, S1, S2, S3
@@ -117,7 +121,8 @@ Reduced States: S0, S1, S2, S3
  3. **Redistribute    Connections** - Split the fan-out of the original cell between the original and the cloned cell. - This balances the load on each output, reducing delay.
  4. **Place and Route the Cloned Cell** - Position the cloned cell in a location that **minimizes wire length** and ensures good timing.
 5. **Verify Improvements** - Re-run **timing and power analysis** to ensure the cloning achieves the desired optimization. - Adjust placement or connections if necessary.
-6. ---
+   
+   ---
 
  
  ## 🟢 Cloning Example Suppose a combinational block AND1 drives 6 heavy load gates, causing a timing bottleneck:
@@ -143,6 +148,7 @@ Retiming is a **circuit optimization technique** used in VLSI design to improve 
 3. **Constraints Analysis** - Ensure that repositioning maintains **functional correctness** of the circuit. - Consider **setup, hold, and timing constraints** to prevent timing violations.
 4. **Optimization** - Adjust register positions to **minimize the clock period** or **optimize power**. - Retiming can reduce critical path delay, allowing higher operating frequencies.
     ---
+   
 ## 🟢 Example Suppose a sequential circuit has a long critical path between two flip-flops:
 
 ```text
@@ -169,7 +175,8 @@ module opt_check (input a , input b , output y);
 endmodule
 ```
 
-**Explanation:** -
+**Explanation:** 
+
 assign y = a ? b : 0; means: 
 - If a is true, y is assigned the value of b.
 - If a is false, y is 0.
@@ -206,13 +213,55 @@ module opt_check2 (input a , input b , output y);
 	assign y = a?1:b;
 endmodule
 ```
-**Functionality:** 2-to-1 multiplexer; y = a ? 1 : b (outputs 1 when a is true, otherwise b). ![Lab 3 Output](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/opt_check3.png) --- ### Lab 4 Verilog code:
-verilog
+**Functionality:** 
+2-to-1 multiplexer;
+y = a ? 1 : b (outputs 1 when a is true, otherwise b). 
+
+![Lab 3 Output](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/opt_check3.png) 
+
+--- 
+
+### Lab 4 Verilog code:
+
+```verilog
 module opt_check4 (input a , input b , input c , output y);
  assign y = a?(b?(a & c ):c):(!c);
  endmodule
-**Functionality:** - Three inputs (a, b, c), output y. - Nested ternary logic: - If a = 1, y = c. - If a = 0, y = !c. - Logic simplifies to: y = a ? c : !c ![Lab 4 Output](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/opt_check4.png) --- # Verilog Source Code vs Synthesized Netlist In VLSI design, understanding the difference between **Verilog source code** and the **synthesized netlist** is crucial. - **Verilog Source Code**: High-level, human-readable description of the design using modules, wires, and assignment statements. - **Synthesized Netlist**: The detailed, gate-level representation generated after synthesis, ready for layout and backend verification. --- ## 🔹 Source Code (Verilog) - Describes the design **at a high level**. - Uses modules, wires, and assignment statements to define the desired behavior and structure. - Includes abstract operations like assign, module instantiation, logical operators (AND, OR, multiplication, etc.). - **Technology-independent**: Does not specify actual gates or cells used in hardware. - Intended for **simulation and functional verification**. --- * Multiple Module Opt_check
-verilog
+```
+
+**Functionality:** 
+- Three inputs (a, b, c), output y.
+- Nested ternary logic:
+- If a = 1, y = c.
+- If a = 0, y = !c.
+- Logic simplifies to:
+- y = a ? c : !c
+
+ ![Lab 4 Output](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/opt_check4.png)
+ 
+ ---
+ 
+ # Verilog Source Code vs Synthesized Netlist
+ 
+ In VLSI design, understanding the difference between **Verilog source code** and the **synthesized netlist** is crucial. 
+ - **Verilog Source Code**: High-level, human-readable description of the design using modules, wires, and assignment statements.
+ - **Synthesized Netlist**:
+ The detailed, gate-level representation generated after synthesis, ready for layout and backend verification.
+ ---
+ 
+## 🔹 Source Code (Verilog) 
+- Describes the design **at a high level**.
+- Uses modules, wires, and assignment statements to define the desired behavior and structure.
+- Includes abstract operations like assign, module instantiation, logical operators (AND, OR, multiplication, etc.).
+- **Technology-independent**: Does not specify actual gates or cells used in hardware.
+- Intended for **simulation and functional verification**.
+
+  
+ ---
+ 
+* Multiple Module Opt_check
+    
+```verilog
 module sub_module1(input a, input b, output y);
   assign y = a & b;
 endmodule
@@ -231,8 +280,12 @@ module multiple_module_opt(input a, input b, input c, input d, output y);
   assign y = c | (b & n1);
 
 endmodule
+```
+
 * Multiple Module Opt_check2
-verilog
+
+  
+```verilog
   module sub_module(input a, input b, output y);
   assign y = a & b;
   endmodule
@@ -246,8 +299,42 @@ verilog
   sub_module U4 (.a(n3), .b(n1), .y(y));
 
   endmodule
-## 🔹 Netlist (Synthesized Output) - Generated after synthesis to map the design to **specific logic gates or standard cells** in the target technology. - Breaks down modules into interconnected gates/cells such as AND, OR, NOT, and other complex library elements. - All wiring and connectivity are explicitly defined. - Netlist diagrams show **signal paths, pins, blocks, and interconnections**, making the hardware implementation ready for **layout, timing, and physical verification**. * Multiple Module Opt_check ![Multiple Module Opt_check](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/multiple_module_opt.png) * Multiple Module Opt_check2 ![Multiple Module Opt_check2](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/multiple_module_opt2.png) --- ## 🔹 Key Differences | Aspect | Verilog Source Code | Synthesized Netlist | |-----------------|---------------------------------------------|--------------------------------------------| | Level | Abstract, functional | Detailed, gate/cell-level | | Technology | Independent | Mapped to standard cell library | | Readability | Human-readable, modular | Optimized, machine-readable, less abstract | | Purpose | Design entry, simulation | Implementation, backend verification, layout | | Components | Modules, assign statements, wires | Blocks, gates, nets, pins per technology | --- **Summary:** - The **Verilog code** describes **what the circuit should do**. - The **netlist** explicitly defines **how it will be built** from logic gates and connections on silicon. ### Lab 5 # Sequential Circuits and its Optimization Verilog code:
-verilog
+
+```
+
+
+## 🔹 Netlist (Synthesized Output) 
+- Generated after synthesis to map the design to **specific logic gates or standard cells** in the target technology.
+- Breaks down modules into interconnected gates/cells such as AND, OR, NOT, and other complex library elements.
+- All wiring and connectivity are explicitly defined.
+- Netlist diagrams show **signal paths, pins, blocks, and interconnections**, making the hardware implementation ready for **layout, timing, and physical verification**.
+
+  
+* Multiple Module Opt_check
+
+  ![Multiple Module Opt_check](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/multiple_module_opt.png)
+
+* Multiple Module Opt_check2 ![Multiple Module Opt_check2](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/multiple_module_opt2.png)
+
+
+---
+
+## 🔹 Key Differences
+
+| Aspect       | Verilog Source Code                       | Synthesized Netlist                                  |
+|-------------|------------------------------------------|-----------------------------------------------------|
+| Level       | Abstract, functional                      | Detailed, gate/cell-level                           |
+| Technology  | Independent                               | Mapped to standard cell library                     |
+| Readability | Human-readable, modular                   | Optimized, machine-readable, less abstract         |
+| Purpose     | Design entry, simulation                  | Implementation, backend verification, layout       |
+| Components  | Modules, assign statements, wires        | Blocks, gates, nets, pins per technology           |
+
+---
+
+### Lab 5
+
+# Sequential Circuits and its Optimization Verilog code:
+```verilog
 module dff_const1(input clk, input reset, output reg q);
 always @(posedge clk, posedge reset)
 begin
@@ -257,8 +344,28 @@ begin
 		q <= 1'b1;
 end
 endmodule
-**Functionality:** - D flip-flop with: - Asynchronous reset to 0 - Loads constant 1 when not in reset **Waveform :** ![Lab 5 Waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/dff_const1_wave.png) **Netlist :** ![Lab 5 Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/dff_const1.png) --- ### Lab 6 Verilog code:
-verilog
+```
+
+**Functionality:** 
+- D flip-flop with:
+- Asynchronous reset to 0
+- Loads constant 1 when not in reset
+
+
+**Waveform :** 
+
+![Lab 5 Waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/dff_const1_wave.png).
+
+**Netlist :** 
+
+![Lab 5 Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/dff_const1.png)
+
+--- 
+
+### Lab 6 Verilog code:
+
+
+```verilog
 module dff_const2(input clk, input reset, output reg q);
 always @(posedge clk, posedge reset)
 begin
@@ -268,8 +375,77 @@ begin
 		q <= 1'b1;
 end
 endmodule
-**Functionality:** - D flip-flop always sets output q to 1 (regardless of reset or clock). **Waveform :** ![Lab 6 Waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/dff_const2_wave.png) **Netlist :** ![Lab 6 Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/dff_const2.png) --- # Similar Examples of Sequential Circuits Optimization with Verilog code and Netlist : **Verilog Codes of Three different modules :** ![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const345.png) # Individual Waveforms : Const 3 : ![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const3_wave.png) Const 4 : ![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const4wave.png) const 5 : ![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const5wave.png) --- # Individual Netlist : Const 3 : ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const3.png) Const 4 : ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const4.png) const 5 : ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const5.png) --- # Handling Unused Outputs in Digital Circuits In digital circuit design, sometimes certain outputs of a module or combinational block are **not used** in the higher-level design. Optimizing these unused outputs can **reduce circuit area, power, and complexity**. --- ## 🔹 Concept - When an output is **not connected** or **unused**, synthesis tools can often **ignore or remove** the logic driving that output. - This leads to a **simplified netlist**, as gates or combinational paths that only contribute to unused outputs are **eliminated**. - Retaining unused logic unnecessarily increases **area, power, and timing complexity**. --- When designing digital circuits in Verilog, unused outputs (or signals that are not connected, read, or used at higher levels) are typically neglected during synthesis—so the netlist omits related gates and connections to optimize the hardware. ## Verilog Code Example with Unused Outputs
-verilog
+```
+
+
+**Functionality:** 
+- D flip-flop always sets output q to 1 (regardless of reset or clock).
+
+ 
+**Waveform :** 
+
+![Lab 6 Waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/dff_const2_wave.png) 
+
+**Netlist :** ![Lab 6 Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/dff_const2.png) 
+
+--- 
+
+# Similar Examples of Sequential Circuits Optimization with Verilog code and Netlist : 
+
+**Verilog Codes of Three different modules :** 
+
+![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const345.png) 
+
+# Individual Waveforms : 
+
+Const 3 : 
+
+![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const3_wave.png) 
+
+Const 4 : 
+
+![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const4wave.png) 
+
+const 5 : 
+
+![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const5wave.png) 
+
+--- 
+
+# Individual Netlist : 
+
+Const 3 : 
+
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const3.png) 
+
+Const 4 : 
+
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const4.png) 
+
+const 5 : 
+
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const5.png) 
+
+--- 
+
+# Handling Unused Outputs in Digital Circuits 
+
+In digital circuit design, sometimes certain outputs of a module or combinational block are **not used** in the higher-level design. Optimizing these unused outputs can **reduce circuit area, power, and complexity**.
+
+---
+
+## 🔹 Concept 
+- When an output is **not connected** or **unused**, synthesis tools can often **ignore or remove** the logic driving that output.
+- This leads to a **simplified netlist**, as gates or combinational paths that only contribute to unused outputs are **eliminated**.
+- Retaining unused logic unnecessarily increases **area, power, and timing complexity**.
+
+ --- 
+ 
+When designing digital circuits in Verilog, unused outputs (or signals that are not connected, read, or used at higher levels) are typically neglected during synthesis—so the netlist omits related gates and connections to optimize the hardware. 
+
+## Verilog Code Example with Unused Outputs
+
+```verilog
 module sample_unused_output(
     input  wire a,
     input  wire b,
@@ -301,4 +477,53 @@ sample_unused_output U1 (
 assign y = used_signal;
 
 endmodule
-In the top module, unused_out from the submodule is **not connected** to anything and not used in further logic. The synthesis tool **removes any hardware** solely responsible for driving unused_out, unless forced otherwise (some tools can drive it to zero). --- ## 🔹 Netlist Behavior with Unused Outputs - During **netlist generation**, logic driving unused outputs is detected and typically **eliminated**, reducing gate count and optimizing area and power. - Only connections that influence **used outputs** (used_out) are maintained. - Logic for unused_out is **omitted** unless specifically constrained or forced to remain. - Warnings may be issued about unused outputs, but **physical resources are saved**. # Example of Demonstrating Unused Outputs # Verilog Code : ![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_code.png) Code 2 : ![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2code.png) # Waveform : ![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_wave.png) # Netlist : ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2.png) --- ## Summary Table | Aspect | Verilog Source Code | Netlist Result | |---------------------|---------------------------------|---------------------------------------------| | Unused Output Signal | Declared and assigned | Not present (logic eliminated) | | Synthesis Warnings | May warn about unused outputs | Output port may be driven to zero or omitted| | Optimization Result | Logic for unused outputs exists | Logic removed; area and power saved | ## Summary - **Focus:** Optimization techniques for combinational and sequential circuits in digital design, with practical Verilog labs. - **Topics Covered:** 1. **Constant Propagation:** Replacing variables with constant values to simplify logic and improve circuit efficiency. 2. **State Optimization:** Reducing states and optimizing encoding in finite state machines to use less logic and power. 3. **Cloning:** Duplicating logic cells/modules to improve timing and balance load. 4. **Retiming:** Repositioning registers in a circuit to enhance performance without altering its function. - **Labs:** Six practical Verilog labs illustrate these concepts, including examples of combinational logic optimizations and D flip-flop behaviors, each with code snippets and output images.
+```
+In the top module, unused_out from the submodule is **not connected** to anything and not used in further logic. The synthesis tool **removes any hardware** solely responsible for driving unused_out, unless forced otherwise (some tools can drive it to zero). 
+--- 
+## 🔹 Netlist Behavior with Unused Outputs 
+- During **netlist generation**, logic driving unused outputs is detected and typically **eliminated**, reducing gate count and optimizing area and power.
+- Only connections that influence **used outputs** (used_out) are maintained.
+- Logic for unused_out is **omitted** unless specifically constrained or forced to remain.
+- Warnings may be issued about unused outputs, but **physical resources are saved**.
+
+
+# Example of Demonstrating Unused Outputs
+
+# Verilog Code : 
+
+![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_code.png)
+
+Code 2 : 
+
+![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2code.png) 
+
+# Waveform : 
+
+![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_wave.png)
+
+# Netlist : 
+
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2.png)
+
+---
+
+## Summary Table
+
+| Aspect                | Verilog Source Code                | Netlist Result                               |
+|----------------------|-----------------------------------|---------------------------------------------|
+| Unused Output Signal  | Declared and assigned             | Not present (logic eliminated)              |
+| Synthesis Warnings    | May warn about unused outputs     | Output port may be driven to zero or omitted|
+| Optimization Result   | Logic for unused outputs exists   | Logic removed; area and power saved        |
+
+---
+
+## Summary
+
+- **Focus:** Optimization techniques for combinational and sequential circuits in digital design, with practical Verilog labs.  
+- **Topics Covered:**  
+  1. **Constant Propagation:** Replacing variables with constant values to simplify logic and improve circuit efficiency.  
+  2. **State Optimization:** Reducing states and optimizing encoding in finite state machines to use less logic and power.  
+  3. **Cloning:** Duplicating logic cells/modules to improve timing and balance load.  
+  4. **Retiming:** Repositioning registers in a circuit to enhance performance without altering its function.  
+- **Labs:** Six practical Verilog labs illustrate these concepts, including examples of combinational logic optimizations and D flip-flop behaviors, each with code snippets and output images.
+
