@@ -42,8 +42,9 @@ The OR gate is removed, and z is tied to constant logic 1.
 
 Result: Entire gates or paths are deleted, saving area and improving timing.
 
-Example of demoonstrating Constant Propogation :
+# Example of demonstrating Constant Propogation :
 
+ <img src="Images/JsUFyyD.jpg" alt="Constant Propagation Diagram" width="70%"/>
 
 
 ## 🔵 Constant Propagation in Sequential Logic
@@ -104,6 +105,52 @@ end
  5.Result: Reduces unnecessary flip-flops and sequential logic, lowering area and power.
 
  <img src="Images/Constant-propagation.png" alt="Constant Propagation Diagram" width="70%"/>
+
+ Constant propagation in sequential logic focuses on simplifying conditional operations, counters, and state machines when signals are constant. This leads to more efficient, smaller, and faster circuits.
+
+
+# State Optimization
+
+State optimization is an important technique in **finite state machine (FSM) design** for VLSI circuits. The goal is to make the FSM **smaller, faster, and more power-efficient** by reducing unnecessary states, optimizing state representation, and minimizing logic.
+
+---
+
+## 🔎 How State Optimization Works
+
+1. **State Reduction**  
+   - Merge **equivalent states** that produce the same outputs for all inputs.  
+   - Reduces the total number of states in the FSM, saving flip-flops and combinational logic.  
+
+2. **State Encoding**  
+   - Assign **optimal binary codes** to each state to minimize combinational logic complexity.  
+   - Common encoding schemes:
+     - Binary Encoding
+     - One-Hot Encoding
+     - Gray Encoding  
+
+3. **Logic Minimization**  
+   - Apply **Boolean algebra simplifications** or use synthesis tools to generate **compact logic equations** for next-state and output logic.  
+   - Reduces the number of gates required.
+
+4. **Power Optimization**  
+   - Techniques such as **clock gating** or **signal gating** reduce unnecessary switching activity.  
+   - Helps lower **dynamic power consumption** in the FSM.
+
+---
+
+### Example
+
+Suppose an FSM has 8 states, but only 4 are functionally distinct. After **state reduction**:
+
+```text
+Original States: S0, S1, S2, S3, S4, S5, S6, S7
+Reduced States: S0, S1, S2, S3
+```
+
+# Illustartion 
+
+
+
 
 
 
