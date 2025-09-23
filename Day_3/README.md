@@ -77,7 +77,8 @@ Another Case :
 Result: Reduces unnecessary flip-flops and sequential logic, lowering area and power.
 
 Example of demoonstrating Constant Propogation :
-![Constant Propagation Diagram](https://www.researchgate.net/profile/Wenguang-Chen/publication/237406049/figure/fig3/AS:340074151501824@1455160607530/Constant-propagation.png)
+<img src="Images/Constant-propagation.png" alt="Constant Propagation Diagram" width="70%"/>
+
 
 
 
