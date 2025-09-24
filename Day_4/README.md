@@ -1,58 +1,73 @@
-# 📑 Table of Contents
-
-1. [⚡️ Gate Level Simulation](#-gate-level-simulation)  
-   1.1 [❓ What is GLS?](#-what-is-gls)  
-   1.2 [💡 Why Perform GLS?](#-why-perform-gls)  
-   1.3 [🕐 When is GLS Performed?](#-when-is-gls-performed)  
-   1.4 [🧭 Types of GLS](#-types-of-gls)  
-   1.5 [⏳ Delay Annotation](#-delay-annotation)  
-
-2. [🧪 Lab Experiment](#-lab-experiment)  
-   2.1 [🔹 Ternary Operator MUX](#-ternary-operator-mux)  
-   2.2 [📜 Verilog Code](#-verilog-code)  
-   2.3 [Waveform of RTL Code Simulation](#waveform-of-rtl-code-simulation)  
-   2.4 [Netlist of RTL Code](#netlist-of-rtl-code)  
-   2.5 [Netlist Code](#netlist-code)  
-   2.6 [Waveform of Netlist Simulation](#waveform-of-netlist-simulation)  
-
-3. [⚡️🔀 Synthesis vs Simulation Mismatch](#-synthesis-vs-simulation-mismatch)  
-   3.1 [🔍 Common Causes of Mismatch](#-common-causes-of-mismatch-️)  
-   3.2 [💡 Key Points to Avoid Mismatch](#-key-points-to-avoid-mismatch-✨)  
-   3.3 [⚡️ Causes of Synthesis–Simulation (S-S) Mismatch](#-causes-of-synthesissimulation-s-s-mismatch-💥)  
-   3.4 [🔧 Quick Checklist for Designers](#-quick-checklist-for-designers-✅)  
-
-4. [🌟 Bad MUX Example (Common Pitfalls)](#-bad-mux-example-common-pitfalls-🧩💥)  
-   4.1 [🔹 Problematic Code](#-problematic-code)  
-   4.2 [✅ Corrected Version of MUX](#-corrected-version-of-mux-🔧)  
-   4.3 [Waveform of RTL Code Simulation of Bad Mux](#waveform-of-rtl-code-simulation-of-bad-mux-)  
-   4.4 [Netlist Code Generated for Bad Mux](#netlist-code-generated-for-bad-mux-)  
-   4.5 [Netlist Simulation of Bad Mux](#netlist-simulation-of-bad-mux-)  
-
-5. [⚡️ Blocking vs. Non-Blocking Assignments in Verilog](#-blocking-vs-non-blocking-assignments-in-verilog-🛠️🔄)  
-   5.1 [3.1 Blocking Statements (`=`)](#31-blocking-statements-)  
-   5.2 [3.2 Non-Blocking Statements (`<=`)](#32-non-blocking-statements-)  
-   5.3 [3.3 Comparison Table](#33-comparison-table-🆚⚡️)  
-
-6. [🛠️ Lab : Blocking Assignment Caveat](#-lab--blocking-assignment-caveat-🛠️)  
-   6.1 [🔹 Problematic Code](#-problematic-code-1)  
-   6.2 [Corrected Order](#-corrected-order)  
-   6.3 [Synthesis of the Blocking Caveat Module](#synthesis-of-the-blocking-caveat-module)  
-   6.4 [GLS Synthesis on the Netlist](#gls-synthesis-on-the-netlist-of-blocking-caveat-module)  
-
-7. [📌 Day 4 Summary](#-day-4-summary-gate-level-simulation--verilog-assignments-🛠️🧩)  
-8. [🏁 Conclusion](#-conclusion)  
-9. [📚 References](#-references)  
+# 🗂️ Day 4: Gate-Level Simulation & Verilog Assignments - Table of Contents 🛠️💡
 
 ---
 
+## 1️⃣ Gate-Level Simulation (GLS) ⚡️
+- ❓ What is GLS?  
+- 💡 Why Perform GLS?  
+- 🕐 When is GLS Performed?  
+- 🧭 Types of GLS  
+- ⏳ Delay Annotation  
+
+---
+
+## 2️⃣ Lab Experiment 🧪
+- 🔹 Ternary Operator MUX  
+- 📜 Verilog Code  
+- 🖥️ Waveform of RTL Code Simulation  
+- 📝 Netlist of RTL Code  
+- 💻 Netlist Code  
+- ⏱️ Waveform of Netlist Simulation  
+
+---
+
+## 3️⃣ Synthesis vs Simulation Mismatch 🔀
+- 🔍 Common Causes of Mismatch  
+- 💡 Key Points to Avoid Mismatch  
+- ⚡️ Causes of Synthesis–Simulation (S-S) Mismatch  
+- 🔧 Quick Checklist for Designers  
+
+---
+
+## 4️⃣ Bad MUX Example 🧩💥
+- ❌ Problematic Code  
+- ✅ Corrected Version of MUX  
+- 🖥️ Waveform of RTL Code Simulation of Bad Mux  
+- 💻 Netlist Code Generated for Bad Mux  
+- ⏱️ Netlist Simulation of Bad Mux  
+
+---
+
+## 5️⃣ Blocking vs Non-Blocking Assignments 🛠️🔄
+- 📝 Blocking Statements (`=`)  
+- ⏱️ Non-Blocking Statements (`<=`)  
+- 🆚 Comparison Table  
+
+---
+
+## 6️⃣ Lab: Blocking Assignment Caveat 🛠️
+- ❌ Problematic Code  
+- ✅ Corrected Order  
+- 💻 Synthesis of the Blocking Caveat Module  
+- ⏱️ GLS Synthesis on the Netlist  
+
+---
+
+## 7️⃣ Day 4 Summary 🧩💡
+- Quick Recap of GLS, S-S Mismatch, Assignments & Labs  
+
+---
+
+## 8️⃣ Conclusion 🏁
+- Key Takeaways & Learnings  
+
+---
+
+## 9️⃣ References 📚
+- Books, Tutorials & Docs Used
 
 
-
-
-
-
-
-#  Gate Level Simulation
+#  ⚡️ Gate Level Simulation
 
 Gate-Level Simulation (**GLS**) is a **critical verification step** in the VLSI design flow where the **synthesized gate-level netlist** of a digital circuit is simulated.  
 It ensures that what you designed at RTL truly works at the gate level, **with real delays and test structures** ✅  
