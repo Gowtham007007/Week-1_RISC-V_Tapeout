@@ -1,71 +1,64 @@
-# 🗂️ Day 4: Gate-Level Simulation & Verilog Assignments - Table of Contents 🛠️💡
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/GLS-Simulation-blue?style=for-the-badge" alt="GLS"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Labs-HandsOn-green?style=for-the-badge" alt="Labs"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Verilog-Coding-orange?style=for-the-badge" alt="Verilog"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Synthesis-Verification-red?style=for-the-badge" alt="Synthesis"></a>
+</p>
+
+# 🎉 Welcome to Day 4: Gate-Level Simulation & Verilog Assignments 🛠️✨
+
+> "From RTL to Gates – Making Your Designs Real!" 💡💻
 
 ---
 
-## 1️⃣ Gate-Level Simulation (GLS) ⚡️
-- ❓ What is GLS?  
-- 💡 Why Perform GLS?  
-- 🕐 When is GLS Performed?  
-- 🧭 Types of GLS  
-- ⏳ Delay Annotation  
+## 🔹 What’s in this Workshop?
+
+This session focuses on bridging the gap between **RTL design** and **actual gate-level behavior**.  
+We’ll explore:
+
+- ⚡️ **Gate-Level Simulation (GLS)** – Validate your post-synthesis netlist for **function, timing, and testability**.  
+- 🔀 **Synthesis vs Simulation Mismatch** – Understand why RTL may behave differently from synthesized netlists and how to avoid it.  
+- 🛠️ **Blocking vs Non-Blocking Assignments** – Learn correct coding practices for combinational & sequential logic.  
+- 🧪 **Hands-on Labs** – Build, simulate, synthesize, and correct modules like **2:1 MUX & Blocking Caveat**.  
 
 ---
 
-## 2️⃣ Lab Experiment 🧪
-- 🔹 Ternary Operator MUX  
-- 📜 Verilog Code  
-- 🖥️ Waveform of RTL Code Simulation  
-- 📝 Netlist of RTL Code  
-- 💻 Netlist Code  
-- ⏱️ Waveform of Netlist Simulation  
+## 🏆 Why This is Important?
+
+- Prevent **silicon bugs** before tape-out ⚠️💣  
+- Master **robust RTL coding practices** 📝✅  
+- Gain confidence in **post-synthesis verification** ⏱️💪  
+- Prepare for **real-world ASIC/FPGA design workflows** 🛠️🚀  
 
 ---
 
-## 3️⃣ Synthesis vs Simulation Mismatch 🔀
-- 🔍 Common Causes of Mismatch  
-- 💡 Key Points to Avoid Mismatch  
-- ⚡️ Causes of Synthesis–Simulation (S-S) Mismatch  
-- 🔧 Quick Checklist for Designers  
+## 📌 How to Use This Repository
+
+1. Browse the **Table of Contents** to navigate topics easily 📖.  
+2. Open the **Labs** folder for hands-on exercises 🧪.  
+3. Follow the **waveform and netlist examples** to understand GLS & S-S mismatches 📊.  
+4. Explore **corrected code** and **best practices** for RTL coding 💡.  
 
 ---
 
-## 4️⃣ Bad MUX Example 🧩💥
-- ❌ Problematic Code  
-- ✅ Corrected Version of MUX  
-- 🖥️ Waveform of RTL Code Simulation of Bad Mux  
-- 💻 Netlist Code Generated for Bad Mux  
-- ⏱️ Netlist Simulation of Bad Mux  
 
+
+# 🗂️ Day 4: Table of Contents 🛠️💡
+
+| Section | Topics |
+|---------|--------|
+| 1️⃣ Gate-Level Simulation (GLS) ⚡️ | ❓ What is GLS? <br> 💡 Why Perform GLS? <br> 🕐 When is GLS Performed? <br> 🧭 Types of GLS <br> ⏳ Delay Annotation |
+| 2️⃣ Lab Experiment 🧪 | 🔹 Ternary Operator MUX <br> 📜 Verilog Code <br> 🖥️ Waveform of RTL Code Simulation <br> 📝 Netlist of RTL Code <br> 💻 Netlist Code <br> ⏱️ Waveform of Netlist Simulation |
+| 3️⃣ Synthesis vs Simulation Mismatch 🔀 | 🔍 Common Causes of Mismatch <br> 💡 Key Points to Avoid Mismatch <br> ⚡️ Causes of S-S Mismatch <br> 🔧 Quick Checklist for Designers |
+| 4️⃣ Bad MUX Example 🧩💥 | ❌ Problematic Code <br> ✅ Corrected Version <br> 🖥️ Waveform of RTL Simulation <br> 💻 Netlist Code <br> ⏱️ Netlist Simulation |
+| 5️⃣ Blocking vs Non-Blocking Assignments 🛠️🔄 | 📝 Blocking Statements (`=`) <br> ⏱️ Non-Blocking Statements (`<=`) <br> 🆚 Comparison Table |
+| 6️⃣ Lab: Blocking Assignment Caveat 🛠️ | ❌ Problematic Code <br> ✅ Corrected Order <br> 💻 Synthesis of Module <br> ⏱️ GLS Synthesis on Netlist |
+| 7️⃣ Day 4 Summary 🧩💡 | Quick Recap of GLS, S-S Mismatch, Assignments & Labs |
+| 8️⃣ Conclusion 🏁 | Key Takeaways & Learnings |
+| 9️⃣ References 📚 | Books, Tutorials & Docs Used |
 ---
-
-## 5️⃣ Blocking vs Non-Blocking Assignments 🛠️🔄
-- 📝 Blocking Statements (`=`)  
-- ⏱️ Non-Blocking Statements (`<=`)  
-- 🆚 Comparison Table  
-
+### ***🚀 Let's Dive In! 🌟***
 ---
-
-## 6️⃣ Lab: Blocking Assignment Caveat 🛠️
-- ❌ Problematic Code  
-- ✅ Corrected Order  
-- 💻 Synthesis of the Blocking Caveat Module  
-- ⏱️ GLS Synthesis on the Netlist  
-
----
-
-## 7️⃣ Day 4 Summary 🧩💡
-- Quick Recap of GLS, S-S Mismatch, Assignments & Labs  
-
----
-
-## 8️⃣ Conclusion 🏁
-- Key Takeaways & Learnings  
-
----
-
-## 9️⃣ References 📚
-- Books, Tutorials & Docs Used
-
 
 #  ⚡️ Gate Level Simulation
 
