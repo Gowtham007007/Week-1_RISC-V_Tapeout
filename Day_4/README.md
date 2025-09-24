@@ -50,13 +50,10 @@ GLS often uses **SDF Back-Annotation** to model **real delays** from synthesis o
 
 ---
 
----
 
-# 🧪 Lab Experiments
+# 🧪 Lab Experiment
 
----
-
-## 🔹 Lab 1: Ternary Operator MUX
+## 🔹Ternary Operator MUX
 
 In this lab, we design a **2:1 Multiplexer** using the **ternary operator** in Verilog.  
 The multiplexer selects one of two inputs (`i0`, `i1`) based on the control signal (`sel`) and drives it to the output (`y`).  
@@ -73,6 +70,7 @@ module ternary_operator_mux (
   assign y = sel ? i1 : i0;
 endmodule
 ```
+---
 ## Waveform of RTL Code Simulation :
 
 ![Ternary Operator Waveform ](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/ternary_wave.png)
@@ -80,7 +78,7 @@ endmodule
 ---
 
 ## Netlist of RTL Code :
-# Synthesis Using Yosys
+## Synthesis Using Yosys
 
 Synthesize the above MUX using Yosys.  
 _Follow the standard Yosys synthesis flow._
@@ -90,6 +88,9 @@ _Follow the standard Yosys synthesis flow._
 ---
 
 ## Netlist Code:
+```shell
+  write_verilog -noattr ternary_operator_mux_net.v
+```
 
 ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/ternary_net_code.png)
 
@@ -97,7 +98,7 @@ _Follow the standard Yosys synthesis flow._
 
 
 ## Waveform of Netlist Simulation :
-# Lab 3: Gate-Level Simulation (GLS) of MUX
+## Gate-Level Simulation (GLS) of MUX
 
 Run GLS for the synthesized MUX.  
 Use this command (adjust paths as needed):
@@ -111,27 +112,49 @@ iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v ternary_operator_mux.v
 ---
 
 
+---
 
-### Lab 2: Synthesis Using Yosys
+## ⚠️ Synthesis vs Simulation Mismatch
 
-Synthesize the above MUX using Yosys.  
-_Follow the standard Yosys synthesis flow._
+A **synthesis-simulation mismatch** occurs when the **simulation results of RTL (pre-synthesis)** do **not match** the **gate-level netlist (post-synthesis)** or actual hardware behavior.  
 
-![lab2](https://github.com/user-attachments/assets/7a0cdc7c-cbbd-4943-bd3d-130a0d66b9b1)
+This is a critical issue in VLSI design because it can cause functional failures after tape-out! 🚨  
 
 ---
 
-### Lab 3: Gate-Level Simulation (GLS) of MUX
+### 🔍 Common Causes of Mismatch
 
-Run GLS for the synthesized MUX.  
-Use this command (adjust paths as needed):
-
-```shell
-iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v ternary_operator_mux.v testbench.v
-```
-
-![lab3](https://github.com/user-attachments/assets/9acf45b3-2e42-4ac1-88ae-b4a494cc8d87)
+| Cause                           | Description                                                                 | Emoji |
+|---------------------------------|-----------------------------------------------------------------------------|-------|
+| **Non-synthesizable constructs** | Use of `#delays`, `initial` blocks, `real` numbers, or unsupported RTL.   | ⛔️   |
+| **Incomplete / Ambiguous RTL**   | Missing `else` clauses, incomplete sensitivity lists, or undefined behavior. | ❓   |
+| **Tool interpretation differences** | Different simulators or synthesis tools may handle ambiguous RTL differently. | 🛠️   |
+| **Incorrect assumptions**        | Timing or resource assumptions not reflected in RTL or netlist.           | ⚡️   |
 
 ---
+
+### 💡 Key Points to Avoid Mismatch
+
+- ✅ Always write **synthesizable RTL** – avoid unsupported constructs.  
+- ✅ Use **complete and unambiguous coding** – cover all branches, define all signals.  
+- ✅ Verify **sensitivity lists** in combinational logic carefully.  
+- ✅ Run **post-synthesis simulation** to catch mismatches early.  
+- ✅ Compare **RTL simulation vs Gate-level simulation** waveforms systematically.  
+
+> 💎 **Pro Tip:** A small mismatch in RTL vs netlist can lead to large functional failures on silicon!  
+
+---
+
+### 🔧 Quick Checklist for Designers
+
+- [ ] No `#delay` or `initial` blocks in synthesizable code  
+- [ ] Every `if` has an `else`  
+- [ ] All combinational blocks have full sensitivity lists  
+- [ ] Test both RTL and synthesized netlist  
+- [ ] Annotate timing with SDF for timing GLS  
+
+---
+
+
 
 
