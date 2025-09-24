@@ -249,7 +249,115 @@ Expect simulation mismatches or warnings due to above issues.
 
 ---
 
-**Note:** 🔀 There is a difference between the **RTL simulation** and the **gate-level netlist simulation** due to synthesis-Simulation Mismatch issues.
+### **Note:** 🔀 There is a difference between the **RTL simulation** and the **gate-level netlist simulation** due to synthesis-Simulation Mismatch issues.
+---
+
+# ⚡️ Blocking vs. Non-Blocking Assignments in Verilog 🛠️🔄
+
+Verilog offers **two types of procedural assignments** that behave differently depending on **combinational vs sequential logic**. ⚡️
+
+---
+
+## 3.1 Blocking Statements (`=`) 📝
+
+- **Syntax:** `=`  
+- **Execution:** Sequential, executes **immediately** ⏩  
+- **Suitable for:** **Combinational logic** (`always @(*)`) 🔹  
+- **Example:**  
+```verilog
+always @(*) 
+  y = a & b;
+```
+
+## 3.2 Non-Blocking Statements (`<=`) ⏱️
+
+- **Syntax:** `<=`  
+- **Execution:** Scheduled, executes **concurrently** at the end of the time step 🔄  
+- **Suitable for:** **Sequential logic** (`always @(posedge clk)`) 🛠️  
+- **Example:**  
+```verilog
+always @(posedge clk) 
+  q <= d;
+```
+
+---
+
+### 3.3 Comparison Table 🆚⚡️
+
+| **Blocking (`=`)** 📝                        | **Non-Blocking (`<=`)** ⏱️                 |
+|---------------------------------------------|--------------------------------------------|
+| Uses `=` operator                           | Uses `<=` operator                         |
+| Sequential, **immediate execution** ⏩       | Concurrent, **scheduled at end of timestep** 🔄 |
+| Updates happen instantly in code order ⚡️   | Updates applied after time step ⏳          |
+| For **combinational logic**, temp variables 🔹 | For **sequential logic**, registers/flip-flops 🛡️ |
+| Infers **combinational logic (gates)** 🧩    | Infers **sequential logic (flip-flops)** 🔧 |
+
+> 💡 **Pro Tip:** Choosing the correct assignment type prevents **simulation vs synthesis mismatches** and ensures correct hardware behavior! 💥
+
+---
+
+---
+
+# 🛠️ Lab : Blocking Assignment Caveat 🛠️
+
+Sometimes, **blocking assignments (`=`)** can produce unexpected results if the **order of assignments** is not carefully handled. 🧩  
+
+### 🔹 Problematic Code
+```verilog
+module blocking_caveat (
+  input a, 
+  input b, 
+  input c, 
+  output reg d
+);
+  reg x;
+  always @ (*) begin
+    d = x & c;
+    x = a | b;
+  end
+endmodule
+```
+
+## What’s wrong?
+- The order of assignments causes `d` to use the old value of `x`—not the newly computed value.
+- **Best Practice:** Assign intermediate variables before using them.
+
+## **Corrected order:**
+```verilog
+always @ (*) begin
+  x = a | b;
+  d = x & c;
+end
+```
+
+![blocking](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/blocking_wave.png)
+
+---
+
+## Synthesis of the Blocking Caveat Module
+
+Synthesize the corrected version of the module and observe the results.
+
+![blocking](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/blocking_net.png)
+
+---
+
+## GLS Synthesis on the Netlist of Blocking Caveat Module
+
+```shell
+iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v blocking_caveat_net.v tb_blocking_caveat.v
+```
+
+![blocking](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/blocking_net_wave.png)
+
+---
+
+
+
+
+
+
+
 
 
 
