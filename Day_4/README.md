@@ -18,6 +18,10 @@ It helps to validate the following aspects:
 
 ---
 
+![GLS](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/Screenshot%20(2).png)
+
+---
+
 ## 💡 Why Perform GLS?
 - ✅ **Synthesis Validation** → Ensures synthesis tools correctly map RTL → gates.  
 - ⏳ **Timing Verification** → Detects violations using **SDF (Standard Delay Format)** back-annotation.  
@@ -124,12 +128,12 @@ This is a critical issue in VLSI design because it can cause **functional failur
 
 ### 🔍 Common Causes of Mismatch 🕵️‍♂️
 
-| Cause                           | Description                                                                 | Emoji |
-|---------------------------------|-----------------------------------------------------------------------------|-------|
-| **Non-synthesizable constructs** | Use of `#delays`, `initial` blocks, `real` numbers, or unsupported RTL.   | ⛔️💀 |
-| **Incomplete / Ambiguous RTL**   | Missing `else` clauses, incomplete sensitivity lists, or undefined behavior. | ❓🌀 |
-| **Tool interpretation differences** | Different simulators or synthesis tools may handle ambiguous RTL differently. | 🛠️⚖️ |
-| **Incorrect assumptions**        | Timing or resource assumptions not reflected in RTL or netlist.           | ⚡️⚠️ |
+| Cause                           | Description                                                                 |
+|---------------------------------|-----------------------------------------------------------------------------|
+| **Non-synthesizable constructs** | Use of `#delays`, `initial` blocks, `real` numbers, or unsupported RTL.⛔️💀|
+| **Incomplete / Ambiguous RTL**   | Missing `else` clauses, incomplete sensitivity lists, or undefined behavior.❓🌀|
+| **Tool interpretation differences** | Different simulators or synthesis tools may handle ambiguous RTL differently.🛠️⚖️|
+| **Incorrect assumptions**        | Timing or resource assumptions not reflected in RTL or netlist.⚡️⚠️|
 
 
 
@@ -184,6 +188,70 @@ Tips for Avoiding S-S Mismatch
 - [ ] Annotate timing with **SDF** for timing GLS ⏳  
 
 ---
+
+
+# 🌟 Bad MUX Example (Common Pitfalls) 🧩💥
+
+Sometimes, **small RTL mistakes** lead to **synthesis–simulation mismatches**.  
+Here’s an example **2:1 MUX** with intentional issues to demonstrate common pitfalls. 🚨
+
+### 🔹 Problematic Code
+
+```verilog
+module bad_mux (
+  input i0, 
+  input i1, 
+  input sel, 
+  output reg y
+);
+  always @ (sel) begin
+    if (sel)
+      y <= i1;
+    else 
+      y <= i0;
+  end
+endmodule
+```
+
+<details> <summary>❗ Issues in this Code (click to expand)</summary>
+
+  1. Incomplete sensitivity list – always @(sel) ignores i0 and i1, which may cause mismatches in simulation. ⚡️
+
+  2. Non-blocking assignment in combinational logic – Using <= in combinational blocks is not recommended; should use blocking assignment =. 🔀
+
+</details>
+
+### ✅ Corrected Version of MUX 🔧
+
+```verilog
+always @ (*) begin
+  if (sel)
+    y = i1;
+  else
+    y = i0;
+end
+```
+## Waveform of RTL Code Simulation of Bad Mux :
+
+![bad_mux](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/bad_mux_wave.png)
+
+---
+## Netlist Code Generated for Bad Mux :
+
+![bad_mux](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/bad_mux_net_code.png)
+
+---
+## Netlist Simulation of Bad Mux :
+Perform GLS on the `bad_mux`.  
+Expect simulation mismatches or warnings due to above issues.
+
+![bad_mux](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/bad_mux_net_wave.png)
+
+---
+
+**Note:** 🔀 There is a difference between the **RTL simulation** and the **gate-level netlist simulation** due to synthesis-Simulation Mismatch issues.
+
+
 
 
 
