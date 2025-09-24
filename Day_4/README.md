@@ -1,9 +1,18 @@
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/GLS-Simulation-blue?style=for-the-badge" alt="GLS"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Labs-HandsOn-green?style=for-the-badge" alt="Labs"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Verilog-Coding-orange?style=for-the-badge" alt="Verilog"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Synthesis-Verification-red?style=for-the-badge" alt="Synthesis"></a>
+  <a href="#gate-level-simulation-gls">
+    <img src="https://img.shields.io/badge/GLS-Simulation-blue?style=for-the-badge" alt="GLS">
+  </a>
+  <a href="#lab-experiment">
+    <img src="https://img.shields.io/badge/Labs-HandsOn-green?style=for-the-badge" alt="Labs">
+  </a>
+  <a href="#blocking-vs-non-blocking-assignments-">
+    <img src="https://img.shields.io/badge/Verilog-Coding-orange?style=for-the-badge" alt="Verilog">
+  </a>
+  <a href="#synthesis-vs-simulation-mismatch">
+    <img src="https://img.shields.io/badge/Synthesis-Verification-red?style=for-the-badge" alt="Synthesis">
+  </a>
 </p>
+
 
 # 🎉 Welcome to Day 4: Gate-Level Simulation & Verilog Assignments 🛠️✨
 
