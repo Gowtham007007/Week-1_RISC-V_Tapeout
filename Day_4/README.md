@@ -50,16 +50,70 @@ GLS often uses **SDF Back-Annotation** to model **real delays** from synthesis o
 
 ---
 
-<details>
-<summary>📚 References</summary>
+---
 
-- [Synopsys: GLS Basics](https://www.synopsys.com/)  
-- [ChipVerify: Gate-Level Simulation](https://www.chipverify.com/verilog/gate-level-simulation)  
-- [VLSI Pro: GLS Flow](https://vlsipro.com/)  
-
-</details>
+# 🧪 Lab Experiments
 
 ---
 
-👉 Next Section: [🔗 Add your next block here!](#)  
+## 🔹 Lab 1: Ternary Operator MUX
+
+In this lab, we design a **2:1 Multiplexer** using the **ternary operator** in Verilog.  
+The multiplexer selects one of two inputs (`i0`, `i1`) based on the control signal (`sel`) and drives it to the output (`y`).  
+
+### 📜 Verilog Code
+```verilog
+// 2:1 MUX using Ternary Operator
+module ternary_operator_mux (
+  input  i0, 
+  input  i1, 
+  input  sel, 
+  output y
+);
+  assign y = sel ? i1 : i0;
+endmodule
+```
+## Waveform of RTL Code Simulation :
+
+![Ternary Operator Waveform ](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/ternary_wave.png)
+
+---
+
+## Netlist of RTL Code :
+
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/ternary_net_code.png)
+
+---
+
+
+## Waveform of Netlist Simulation :
+
+![Ternary Operator Waveform ](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/ternary_net_wave.png)
+
+---
+
+
+
+### Lab 2: Synthesis Using Yosys
+
+Synthesize the above MUX using Yosys.  
+_Follow the standard Yosys synthesis flow._
+
+![lab2](https://github.com/user-attachments/assets/7a0cdc7c-cbbd-4943-bd3d-130a0d66b9b1)
+
+---
+
+### Lab 3: Gate-Level Simulation (GLS) of MUX
+
+Run GLS for the synthesized MUX.  
+Use this command (adjust paths as needed):
+
+```shell
+iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v ternary_operator_mux.v testbench.v
+```
+
+![lab3](https://github.com/user-attachments/assets/9acf45b3-2e42-4ac1-88ae-b4a494cc8d87)
+
+---
+
 
