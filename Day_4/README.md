@@ -116,7 +116,6 @@ iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v ternary_operator_mux.v
 ---
 
 
-
 # ⚡️🔀 Synthesis vs Simulation Mismatch
 
 
@@ -233,15 +232,36 @@ end
 ```
 ## Waveform of RTL Code Simulation of Bad Mux :
 
+- This shows the **behavior of the original RTL MUX**.  
+- Output `y` is computed based on **ideal combinational logic**.  
+- No real gate delays are considered here. ⚡️  
+
+**Observations:**  
+- Logic appears correct in all test cases. ✅  
+- Immediate update of output based on `sel` input.  
+- Helps verify functional correctness of RTL before synthesis.
+  
 ![bad_mux](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/bad_mux_wave.png)
 
 ---
 ## Netlist Code Generated for Bad Mux :
 
+- This waveform shows **post-synthesis behavior** of the Bad MUX.  
+- Realistic **gate delays** from synthesis tools are included (SDF annotated). ⏱️  
+- Output `y` may **not match the RTL simulation** due to issues like:  
+  - Missing sensitivity list 🕵️‍♂️  
+  - Wrong blocking vs non-blocking assignment 🔄  
+
+**Observations:**  
+- Timing differences may appear in waveform. ⚠️  
+- Some outputs may lag or be incorrect in edge cases.  
+- Highlights **why synthesis-simulation mismatch occurs**.
+  
 ![bad_mux](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/bad_mux_net_code.png)
 
 ---
 ## Netlist Simulation of Bad Mux :
+
 Perform GLS on the `bad_mux`.  
 Expect simulation mismatches or warnings due to above issues.
 
@@ -250,6 +270,7 @@ Expect simulation mismatches or warnings due to above issues.
 ---
 
 ### **Note:** 🔀 There is a difference between the **RTL simulation** and the **gate-level netlist simulation** due to synthesis-Simulation Mismatch issues.
+
 ---
 
 # ⚡️ Blocking vs. Non-Blocking Assignments in Verilog 🛠️🔄
@@ -296,7 +317,6 @@ always @(posedge clk)
 
 ---
 
----
 
 # 🛠️ Lab : Blocking Assignment Caveat 🛠️
 
@@ -349,6 +369,64 @@ iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v blocking_caveat_net.v 
 ```
 
 ![blocking](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/blocking_net_wave.png)
+
+---
+
+
+# 📌 Day 4 Summary: Gate-Level Simulation & Verilog Assignments 🛠️🧩
+
+Here’s a **quick recap** of what we learned today:  
+
+- **🖥️ Gate-Level Simulation (GLS):**  
+  Validates **post-synthesis netlist** for:  
+  ✅ Functional correctness  
+  ⏱️ Timing behavior  
+  🧩 Testability (scan chains, DFT)  
+
+- **🔀 Synthesis vs Simulation Mismatch:**  
+  Occurs when **RTL sim ≠ Netlist sim** due to:  
+  🕵️‍♂️ Missing sensitivity lists  
+  🔄 Blocking vs Non-Blocking assignment issues  
+  ❌ Non-standard/ambiguous Verilog  
+
+- **📝 Blocking vs Non-Blocking Assignments:**  
+  - `=` → Blocking, **combinational logic** ⚡️  
+  - `<=` → Non-blocking, **sequential logic** ⏱️  
+
+- **🛠️ Labs Covered:**  
+  1️⃣ **Bad MUX Demo:** Shows S-S mismatch ⚡  
+  2️⃣ **Corrected MUX:** Proper sensitivity & assignments ✅  
+  3️⃣ **Blocking Assignment Caveat:** Correct order for reliable results 🔧  
+
+- **🔍 Simulation Observations:**  
+  - RTL waveform 🖥️ → ideal, immediate output  
+  - Netlist waveform 🔧 → realistic delays, may mismatch ⚠️  
+
+> 💡 **Key Takeaway:** Correct **RTL coding + assignment usage + GLS** ensures your hardware behaves as intended 🛡️💥  
+
+---
+
+# 🏁 Conclusion
+
+Today’s session focused on **Gate-Level Simulation, RTL coding practices, and synthesis verification**.  
+
+- ✅ **GLS** ensures your **post-synthesis netlist** works as intended.  
+- 🔀 Understanding **synthesis vs simulation mismatches** helps catch subtle RTL errors early.  
+- 📝 **Blocking vs Non-Blocking assignments** are crucial for **combinational and sequential logic**.  
+- 🛠️ Labs demonstrated **common pitfalls** (Bad MUX, Blocking caveats) and how to **correct them**.  
+
+> 💡 **Takeaway:** Careful RTL design, correct assignment usage, and thorough GLS **prevent hardware bugs and mismatches**, saving time during physical design and tape-out. 🛡️💥  
+
+---
+
+# 📚 References
+
+1. **M. Mano, "Digital Design," 6th Edition, Pearson.**  
+2. **R. Brown, "FPGA Prototyping By Verilog Examples," 1st Edition, Wiley.**  
+3. **S. Palnitkar, "Verilog HDL: A Guide to Digital Design and Synthesis," 2nd Edition, Prentice Hall.**  
+4. **ASIC World Tutorials:** [https://www.asic-world.com/verilog/index.html](https://www.asic-world.com/verilog/index.html)  
+5. **Xilinx Documentation – Verilog Coding Guidelines:** [https://www.xilinx.com/support/documentation](https://www.xilinx.com/support/documentation)  
+6. **Yosys Open-Source Synthesis Manual:** [http://www.clifford.at/yosys/](http://www.clifford.at/yosys/)  
 
 ---
 
