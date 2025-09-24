@@ -7,7 +7,8 @@
 
 </div>
 
-# 🌟 Day 1: Introduction to Verilog RTL Design & Synthesis
+# 🌟🚀 **Day 1: Introduction to Verilog RTL Design & Synthesis** 🛠️💡
+
 
 <div align="center">
   <img src="https://img.shields.io/badge/Welcome-to-RTL-Workshop-purple?style=for-the-badge" alt="Welcome Badge"/>
