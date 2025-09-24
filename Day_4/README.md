@@ -112,48 +112,79 @@ iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v ternary_operator_mux.v
 ---
 
 
----
 
-## ⚠️ Synthesis vs Simulation Mismatch
+# ⚡️🔀 Synthesis vs Simulation Mismatch
+
 
 A **synthesis-simulation mismatch** occurs when the **simulation results of RTL (pre-synthesis)** do **not match** the **gate-level netlist (post-synthesis)** or actual hardware behavior.  
 
-This is a critical issue in VLSI design because it can cause functional failures after tape-out! 🚨  
+This is a critical issue in VLSI design because it can cause **functional failures after tape-out**! 🚨💣  
 
 ---
 
-### 🔍 Common Causes of Mismatch
+### 🔍 Common Causes of Mismatch 🕵️‍♂️
 
 | Cause                           | Description                                                                 | Emoji |
 |---------------------------------|-----------------------------------------------------------------------------|-------|
-| **Non-synthesizable constructs** | Use of `#delays`, `initial` blocks, `real` numbers, or unsupported RTL.   | ⛔️   |
-| **Incomplete / Ambiguous RTL**   | Missing `else` clauses, incomplete sensitivity lists, or undefined behavior. | ❓   |
-| **Tool interpretation differences** | Different simulators or synthesis tools may handle ambiguous RTL differently. | 🛠️   |
-| **Incorrect assumptions**        | Timing or resource assumptions not reflected in RTL or netlist.           | ⚡️   |
+| **Non-synthesizable constructs** | Use of `#delays`, `initial` blocks, `real` numbers, or unsupported RTL.   | ⛔️💀 |
+| **Incomplete / Ambiguous RTL**   | Missing `else` clauses, incomplete sensitivity lists, or undefined behavior. | ❓🌀 |
+| **Tool interpretation differences** | Different simulators or synthesis tools may handle ambiguous RTL differently. | 🛠️⚖️ |
+| **Incorrect assumptions**        | Timing or resource assumptions not reflected in RTL or netlist.           | ⚡️⚠️ |
+
+
+
+### 💡 Key Points to Avoid Mismatch 🌟✨
+
+- ✅ **Always write synthesizable RTL** – avoid unsupported constructs. 📝  
+- ✅ **Use complete and unambiguous coding** – cover all branches, define all signals. ✅🔧  
+- ✅ **Verify sensitivity lists** in combinational logic carefully. 🧐  
+- ✅ **Run post-synthesis simulation** to catch mismatches early. ⏱️  
+- ✅ **Compare RTL vs Gate-level waveforms** systematically. 📊🔍
+
+  ---
+
+## ⚡️ Causes of Synthesis–Simulation (S-S) Mismatch 🧩💥
+
+Synthesis–Simulation mismatches often occur due to subtle coding issues in RTL. Understanding the causes helps **avoid functional surprises**! 🚨
+
+| Cause | Description |
+|-------|-------------|
+| **Missing Sensitivity List** | Combinational blocks without proper sensitivity lists can behave differently in simulation vs synthesized hardware.🕵️‍♂️⚡️|
+| **Blocking vs Non-blocking Assignment** | Incorrect use of `=` (blocking) vs `<=` (non-blocking) in sequential logic may create mismatches in timing and ordering.🔀⏱️|
+| **Non-standard Verilog Coding** | Using non-synthesizable constructs, initial blocks, or non-standard RTL may simulate correctly but fail after synthesis.❌🛠️|
+
+Tips for Avoiding S-S Mismatch
+
+- ✅ Always include **full sensitivity lists** in combinational logic (`always @(*)`).  
+- ✅ Use **blocking assignments (`=`) for combinational**, **non-blocking (`<=`) for sequential** logic.  
+- ✅ Stick to **standard synthesizable Verilog constructs**.  
+- ✅ Perform **post-synthesis simulation** to catch mismatches early.
+  
+
+> 🔍 **Pro Insight:** Even small mismatches can lead to **major functional failures on silicon**! ⚡️💣  
 
 ---
 
-### 💡 Key Points to Avoid Mismatch
 
-- ✅ Always write **synthesizable RTL** – avoid unsupported constructs.  
-- ✅ Use **complete and unambiguous coding** – cover all branches, define all signals.  
-- ✅ Verify **sensitivity lists** in combinational logic carefully.  
-- ✅ Run **post-synthesis simulation** to catch mismatches early.  
-- ✅ Compare **RTL simulation vs Gate-level simulation** waveforms systematically.  
+<details>
+<summary>💡 Fun Tip / Pro Insight 🌈</summary>
 
-> 💎 **Pro Tip:** A small mismatch in RTL vs netlist can lead to large functional failures on silicon!  
+> A **tiny mismatch** in RTL vs netlist can lead to **huge silicon failures**! 🚀💥  
+> Always simulate **both functional & timing GLS** before moving to physical design. 🛡️
+</details>
 
 ---
 
-### 🔧 Quick Checklist for Designers
+### 🔧 Quick Checklist for Designers ✅🛠️
 
-- [ ] No `#delay` or `initial` blocks in synthesizable code  
-- [ ] Every `if` has an `else`  
-- [ ] All combinational blocks have full sensitivity lists  
-- [ ] Test both RTL and synthesized netlist  
-- [ ] Annotate timing with SDF for timing GLS  
+- [ ] No `#delay` or `initial` blocks in synthesizable code ⛔️  
+- [ ] Every `if` has an `else` 📝  
+- [ ] All combinational blocks have full sensitivity lists 🧐  
+- [ ] Test **both RTL and synthesized netlist** ⚡️  
+- [ ] Annotate timing with **SDF** for timing GLS ⏳  
 
 ---
+
 
 
 
