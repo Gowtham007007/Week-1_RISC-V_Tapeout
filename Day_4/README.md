@@ -80,6 +80,16 @@ endmodule
 ---
 
 ## Netlist of RTL Code :
+# Synthesis Using Yosys
+
+Synthesize the above MUX using Yosys.  
+_Follow the standard Yosys synthesis flow._
+
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/ternary_net.png)
+
+---
+
+## Netlist Code:
 
 ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/ternary_net_code.png)
 
@@ -87,6 +97,14 @@ endmodule
 
 
 ## Waveform of Netlist Simulation :
+# Lab 3: Gate-Level Simulation (GLS) of MUX
+
+Run GLS for the synthesized MUX.  
+Use this command (adjust paths as needed):
+
+```shell
+iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v ternary_operator_mux.v testbench.v
+```
 
 ![Ternary Operator Waveform ](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/ternary_net_wave.png)
 
