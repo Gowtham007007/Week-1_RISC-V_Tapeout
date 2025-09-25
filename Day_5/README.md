@@ -248,7 +248,7 @@ Even in small combinational modules, **never leave branches incomplete**. This p
 Learn how incomplete or improperly used `case` statements in Verilog can lead to **inferred latches**, unpredictable behavior, and synthesis warnings.
 
 ---
-💻 ** Problematic Module Example:**
+## 💻 ** Problematic Module Example:**
 
 ```verilog
     module incomp_case(input i0 , input i1 , input i2 , input[1:0] sel , output reg y);
@@ -263,7 +263,7 @@ Learn how incomplete or improperly used `case` statements in Verilog can lead to
 ## Waveform Generated for the RTL Code Simulation :
 ![case](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/casewave.png)
 
-⚠️ Problem Description:
+## ⚠️ Problem Description:
 
 Only sel = 2'b00 and sel = 2'b01 are assigned values.
 
@@ -325,14 +325,14 @@ endmodule
 
 ---
 
-⚠️ **Observation:**
+## ⚠️ **Observation:**
 
 - Using a **wildcard (`?`)** can unintentionally leave **some input combinations uncovered**.
 - For example, `2'b1?` covers `10` and `11`, but if not handled carefully, synthesis tools may still infer **latches** for other unassigned cases.
 - Incomplete coverage in `case` statements is a **common source of unintended storage elements** in combinational logic.
-- 
+  
 
-🖼 Demo Images:
+## 🖼 Demo Images:
 
 Generated Netlist:
 ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/badcasenet.png)
@@ -342,7 +342,7 @@ Netlist Simulation Result:
 
 ⚠️ Observation: The simulation shows unexpected retention of previous values when the input does not match explicit cases. This confirms the latch inference issue.
 
-✅ Solution – Complete Coverage:
+## ✅ Solution – Complete Coverage:
 ```verilog
 
 always @(*) begin
@@ -357,7 +357,7 @@ end
 ```
 
 
-💡 Best Practices:
+## 💡 Best Practices:
 
 Avoid ambiguous wildcards unless fully intentional.
 
@@ -365,9 +365,11 @@ Always include a default: case to handle all unmatched inputs.
 
 Verify with simulation and synthesis reports to catch any inferred latches early.
 
-✨ Pro Tip:
+## ✨ Pro Tip:
 
 Covering all cases prevents glitches, ensures combinational behavior, and improves RTL reliability for downstream synthesis and layout.
+
+---
 
 
 
