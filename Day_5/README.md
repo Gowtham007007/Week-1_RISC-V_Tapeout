@@ -363,12 +363,12 @@ Covering all cases prevents glitches, ensures combinational behavior, and improv
 
 
 
-##🎉 Demo: Complete Case Statement – Proper Coverage
+## 🎉 Demo: Complete Case Statement – Proper Coverage
 
 🔹 Objective:
 Demonstrate a fully covered case statement in Verilog that avoids inferred latches and works correctly for all input combinations.
 
-###💻 Example Module – Complete Case:
+## 💻 Example Module – Complete Case:
 ```verilog
 module comp_case (
     input i0, input i1, input i2, 
@@ -425,6 +425,124 @@ Combine good coding practices with clear comments to make designs readable.
 A complete case statement is one of the simplest ways to write safe combinational logic and avoid subtle synthesis bugs.
 
 Use badges, emojis, and descriptive comments in documentation to make your repository visually appealing and learner-friendly!
+
+
+
+ ## 🎉 Demo: Partial Assignment in Case Statements – Beware of Unassigned Signals
+
+🔹 **Problem Overview:**
+
+- When **multiple outputs** are assigned inside a case statement, it’s crucial that **all outputs are assigned in all branches**.
+- Failure to do so can lead to **inferred latches** for the unassigned signals.
+- In this example, `x` is **not assigned** in the `2'b01` branch, which can cause an **unintended latch** for `x`.
+
+---
+
+💻 **Partial Assignment Code:**
+
+```verilog
+module partial_case_assign (
+    input i0, input i1, input i2,
+    input [1:0] sel,
+    output reg y, output reg x
+);
+always @(*) begin
+    case(sel)
+        2'b00: begin
+            y = i0;
+            x = i2;
+        end
+        2'b01: y = i1;           // ❌ x is not assigned here
+        default: begin
+            x = i1;
+            y = i2;
+        end
+    endcase
+end
+endmodule
+
+```
+
+---
+
+🖼 **Demo Image – Generated Netlist:**
+
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/partialnet.png)
+
+> Observation: The netlist shows that x is inferred as a latch in the branch where it is not explicitly assigned. This is undesirable for combinational logic.
+> 
+
+---
+
+✅ **Solution – Ensure All Outputs Are Assigned:**
+
+```verilog
+always @(*) begin
+    case(sel)
+        2'b00: begin
+            y = i0;
+            x = i2;
+        end
+        2'b01: begin
+            y = i1;
+            x = i1;      // ✅ Assign x in this branch
+        end
+        default: begin
+            x = i1;
+            y = i2;
+        end
+    endcase
+end
+
+```
+
+---
+
+💡 **Key Takeaways:**
+
+- Always **assign every output signal in all branches** of a case statement.
+- Use **default branches** to cover remaining combinations.
+- Simulation and netlist verification help **catch inferred latches early**.
+- Proper signal assignment ensures **clean combinational logic** and predictable behavior.
+
+---
+
+🎯 **Pro Tip:**
+
+- In multi-output case statements, **think of each output independently** and make sure no branch leaves any signal undefined.
+- Combine this with **visual netlist checks** to confirm all assignments are correctly mapped.
+  
+  ---
+
+## Common Verilog RTL Issues & Best Practices when using If and Case Statements 
+
+### **1. Problems & Solutions Table**
+
+| **Problem** | **Solution** |
+| --- | --- |
+| Incomplete `case` | Use a `default` branch to cover all possible cases. |
+| Incomplete `if` | Use an `else` branch to ensure all conditions are handled. |
+| Partial assignment | Assign **all outputs** in every segment of `case` or `if` to avoid latches. |
+
+---
+
+### **2. Best Practices & Notes**
+
+- **Use `reg` inside `always`**:
+    
+    If `if` or `case` statements are used inside an `always` block, the variables assigned must be declared as `reg`.
+    
+- **Priority difference between `if` and `case`**:
+    - `if-else` gives **priority** to the first true condition.
+    - `case` does **not have inherent priority**; overlapping cases can cause unexpected behavior.
+- **Avoid overlapping cases**:
+    
+    Overlapping case conditions may cause **incorrect RTL simulation** results, though **netlist simulation** might still work as expected.
+    
+
+---
+
+
 
 
 
