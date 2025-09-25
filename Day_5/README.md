@@ -542,6 +542,225 @@ end
 
 ---
 
+# Block 3 : 🔄 For Loops in Verilog
+
+🔹 Overview
+
+A for loop in Verilog is used inside procedural blocks (always, initial, tasks/functions) to execute repetitive statements based on a loop counter.
+
+🔹 Syntax
+```verilog
+for (initialization; condition; increment) begin
+    // Statements to execute
+end
+```
+
+
+Key Points:
+
+✅ Must be inside procedural blocks.
+
+✅ Synthesizable only if the number of iterations is fixed at compile time.
+
+✅ Commonly used for MUXes, arrays, and repetitive assignments.
+
+🔹 Example: 4-to-1 MUX Using a For Loop
+```verilog
+module mux_4to1_for_loop (
+    input wire [3:0] data, // 4 input lines
+    input wire [1:0] sel,  // 2-bit select
+    output reg y           // Output
+);
+    integer i;
+    always @(data, sel) begin
+        y = 1'b0; // Default output
+        for (i = 0; i < 4; i = i + 1) begin
+            if (i == sel)
+                y = data[i];
+        end
+    end
+endmodule
+```
+
+⚡ Explanation
+
+Default Assignment: y = 1'b0; prevents inferred latches. ⚠️
+
+Loop Index i: Iterates through all inputs to check which matches the select signal.
+
+Condition Check: if (i == sel) selects the correct input line. ✅
+
+Scalable Design: Easy to extend for 8-to-1, 16-to-1 MUXes without writing long case statements.
+
+🌟 Advantages
+
+✅ Reduces code repetition.
+
+✅ Ensures readability and maintainability.
+
+✅ Synthesizes to the same hardware as a case-based MUX.
+
+---
+Lets have a look at a ``Example`` code along with its waveform and Netlist Generation : 
+```verilog
+    module mux_generate (
+    input i0, input i1, input i2, input i3,
+    input [1:0] sel,
+    output reg y
+);
+wire [3:0] i_int;
+assign i_int = {i3, i2, i1, i0};
+integer k;
+always @(*) begin
+    for (k = 0; k < 4; k = k + 1) begin
+        if (k == sel)
+            y = i_int[k];
+    end
+end
+endmodule
+```
+
+## 🔎 Simulation Waveform 📈
+
+- The simulation waveform will illustrate how the **for loop selects one of the 4 inputs** (`i0–i3`) based on the **2-bit selector**.
+- At each toggle of `sel`, the output `y` reflects the **corresponding input line** ✅.
+- Each iteration of the loop is unrolled at synthesis, so **MUX behavior is clear and efficient** 🔬.
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/generatewave.png)
+
+---
+
+## 🏗️ Netlist View 🖼️
+
+- When synthesized, the netlist will explicitly show a **4-to-1 multiplexer** built from logic gates.
+- The `for` loop in RTL does **not remain a loop in hardware**; instead, it generates a real mux structure ⚡.
+- With **Yosys + GTKWave**, you can confirm:
+    - Correct functionality via simulation.
+    - The actual gate-level design in the netlist 🔍.
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/generatenet.png)
+
+---
+
+## 🌟 Why Use For Loop Here?
+
+- 🧩 **Compact Code** → Instead of writing multiple `case` or `if` blocks, a simple loop describes the logic.
+- ⚙️ **Automation** → Cleaner RTL for scalable designs.
+- ✅ **Synthesis Friendly** → As the loop has a **fixed number of iterations**, synthesis tools expand it properly into combinational hardware.
+
+---
+
+## ✅ Advantages of Generate Blocks
+
+- ⚡ **Automation** – Save time writing repetitive instantiations.
+- 🔄 **Scalability** – Easy to extend from 4 gates → 8, 16, or more by changing loop bounds.
+- 🧩 **Hierarchy Naming** – Each generated instance has a unique hierarchical name.
+- 📏 **Parameterization** – Great for designs where structure size depends on parameters.
+
+✨ Generate blocks are a powerful Verilog feature that makes your designs scalable, maintainable, and cleaner. With waveform simulation and netlist inspection, you can clearly see how repetitive hardware is built automatically! 🚀
+
+---
+
+
+
+
+
+
+# ⚙️ Block 4: Generate Blocks in Verilog 🧩
+
+---
+
+## 🔹 What is a Generate Block?
+
+A **generate block** in Verilog is used to **create repeated hardware structures** at *compile time*.
+
+It allows you to **automatically replicate logic or module instances** instead of writing them manually.
+
+✨ Common use cases:
+
+- Repeating **logic structures** (e.g., gates, adders).
+- Instantiating **multiple modules**.
+- Creating **parameterized hardware**.
+
+---
+
+## 🔹 Key Ingredients
+
+- **`genvar`** → Special variable type used in `generate` loops.
+- **`for` loop inside generate`** → Defines how many copies of the logic/module to create.
+- **Naming blocks (`: gen_loop`)** → Helpful for hierarchy debugging in simulation/netlist.
+
+---
+
+## 🔹 Example: Generate AND Gates
+
+```verilog
+genvar i;
+generate
+    for (i = 0; i < 4; i = i + 1) begin : gen_loop
+        and_gate and_inst (.a(in[i]), .b(in[i+1]), .y(out[i]));
+    end
+endgenerate
+
+```
+
+✅ This will **instantiate 4 AND gates** automatically, connecting inputs and outputs systematically.
+
+No need to write 4 separate instantiations manually 🚀.
+
+
+ 
+# Block 5 : 🔀 DEMUX Implementations – Case vs For Loop
+
+---
+
+## 📌 1:8 DEMUX Using Case Statement 🧾
+
+### 🔎 Simulation Waveform 📈
+
+- The waveform shows how the **input signal `i`** is routed to one of the **eight outputs (o0–o7)** depending on the **3-bit select line**.
+- At each change in `sel`, only one output goes **HIGH**, while others remain **LOW**.
+- Easy to verify correctness step by step.
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/demuxwave.png)
+  
+
+### 🏗️ Netlist View 🖼️
+
+- The synthesized netlist expands the **case-based conditional logic** into a network of gates.
+- Each output is properly mapped to the input based on the select bits.
+- This structure clearly highlights the **decoder-like expansion** required for DEMUX logic.
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/demuxnet.png)
+---
+
+## 📌 1:8 DEMUX Using For Loop ♻️
+
+### 🔎 Simulation Waveform 📈
+
+- The waveform again shows only **one output active at a time**, depending on `sel`.
+- The **for loop version produces identical behavior** to the case-based DEMUX ✅.
+- Using GTKWave, you’ll see that as `sel` iterates, the selected output follows `i`.
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/demuxgenwave.png)
+
+
+### 🏗️ Netlist View 🖼️
+
+- The for loop is **completely unrolled by the synthesis tool**.
+- Netlist explicitly shows **eight separate logic paths**, just like in the case-based version.
+- This demonstrates that **for loops don’t exist in hardware** — they’re just a compact way to describe repetitive logic.
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/demuxgennet.png)
+---
+
+## ⚖️ Case vs For Loop – Quick Comparison
+
+- 🧾 **Case Statement** → Clear, explicit, and beginner-friendly.
+- ♻️ **For Loop** → Cleaner code, scalable for larger DEMUX structures.
+- 🏁 **Netlist Result** → Both approaches synthesize into identical hardware.
+
+✨ **Takeaway:** Both styles are valid — but **for loops provide elegance** in code, especially when dealing with larger DEMUX or repetitive logic! 🎯
+
+---
+
+
+
+
 
 
 
