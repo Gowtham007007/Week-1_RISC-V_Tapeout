@@ -1,15 +1,14 @@
+<div align="center">
+    
 # 🌟 Week 1 | Day 5: Advanced Synthesis & Optimization 🚀
 
-<div align="center">
 
 📅 *“Day 5 marks not the end, but the beginning of thinking like a chip designer.”* ⚡  
 ✨ *Optimization is not about making it work — it’s about making it work **better, faster, and smarter.*** ✨  
 
----
+
 
 ![Progress](https://img.shields.io/badge/Progress-Week_1%20Day_5-purple?style=for-the-badge&logo=github)
-![Learning](https://img.shields.io/badge/Learning-Never_Stops-yellow?style=for-the-badge&logo=starship&logoColor=white)
-![Consistency](https://img.shields.io/badge/Consistency-Always_Greater_Than_Intensity-blue?style=for-the-badge&logo=git)
 ![Final](https://img.shields.io/badge/Status-Final_Day-red?style=for-the-badge)
 
 ![SKY130](https://img.shields.io/badge/PDK-SKY130-blue?style=for-the-badge&logo=opensourceinitiative)
