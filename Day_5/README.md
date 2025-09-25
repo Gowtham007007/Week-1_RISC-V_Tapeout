@@ -363,3 +363,69 @@ Covering all cases prevents glitches, ensures combinational behavior, and improv
 
 
 
+##🎉 Demo: Complete Case Statement – Proper Coverage
+
+🔹 Objective:
+Demonstrate a fully covered case statement in Verilog that avoids inferred latches and works correctly for all input combinations.
+
+###💻 Example Module – Complete Case:
+```verilog
+module comp_case (
+    input i0, input i1, input i2, 
+    input [1:0] sel, output reg y
+);
+    always @(*) begin
+        case(sel)
+            2'b00: y = i0;   // ✅ Explicitly assigned
+            2'b01: y = i1;   // ✅ Explicitly assigned
+            default: y = i2; // ✅ Default handles remaining cases (2'b10, 2'b11)
+        endcase
+    end
+endmodule
+```
+
+
+## ✨ Key Highlights:
+
+🌟 All input combinations are covered either explicitly or via default.
+
+🚀 Prevents unintended latches in combinational logic.
+
+🔹 Simplifies synthesis and simulation verification.
+
+💡 Ensures predictable and robust RTL behavior.
+
+## 🖼 Demo Images:
+
+
+Simulation Result:
+![Simulation](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/compcasewave.png)
+
+Generated Netlist:
+![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/compcasenet.png)
+
+
+
+Observation: The simulation confirms that outputs are correct for all input combinations and no latches are inferred.
+
+✅ Best Practices Reminder:
+
+Always cover all possible values of your case selector.
+
+Use a default: branch for any remaining combinations.
+
+Validate RTL behavior via simulation before synthesis.
+
+Combine good coding practices with clear comments to make designs readable.
+
+---
+
+🎯 Pro Tip:
+
+A complete case statement is one of the simplest ways to write safe combinational logic and avoid subtle synthesis bugs.
+
+Use badges, emojis, and descriptive comments in documentation to make your repository visually appealing and learner-friendly!
+
+
+
+
