@@ -37,13 +37,14 @@ Focus on advanced RTL design concepts, emphasizing **timing-aware coding ⏱️*
 
 | **Section** 🔹 | **Topics** 📌 | **Link** 🔗 |
 |----------------|---------------|-------------|
-| ⏱ **Timing Libraries** | 📘 SKY130 PDK Overview<br>🔍 Decoding `tt_025C_1v80` in the SKY130 PDK<br>📝 Opening and Exploring the .lib File | [Timing Libraries]() |
-| ⚡ **Synthesis Approaches** | 🏗 Hierarchical Synthesis<br>🧩 Flattened Synthesis<br>⚖️ Key Differences Between Hierarchical & Flattened<br>💻 Multiple Module Netlist | [Synthesis Approaches]() |
-| 🔹 **Flip-Flop Coding Styles** | ⏱ Asynchronous Reset D Flip-Flop<br>🔴 Asynchronous Set D Flip-Flop<br>⏹ Synchronous Reset D Flip-Flop | [Flip-Flop Coding]() |
-| 🖥 **Simulation Workflow** | 💻 Icarus Verilog Simulation<br>🌈 Viewing Waveforms in GTKWave | [Simulation Workflow]() |
-| ⚡ **Synthesis Workflow** | 🛠 Synthesis with Yosys<br>🧮 Mapping Flip-Flops & Technology Mapping<br>🔹 Gate-Level Netlist Visualization | [Synthesis Workflow]() |
-| 🧮 **Example Design** | ✖ Multiple by 8 Netlist Generation | [Example Design]() |
-| 📊 **Summary & Best Practices** | 📝 Key Takeaways<br>💡 RTL Coding Tips & Timing-Aware Practices | [Summary]() |
+| ⏱ **Timing Libraries** | 📘 SKY130 PDK Overview<br>🔍 Decoding `tt_025C_1v80` in the SKY130 PDK<br>📝 Opening and Exploring the .lib File | [Timing Libraries](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_2#%EF%B8%8F-timing-libraries) |
+| ⚡ **Synthesis Approaches** | 🏗 Hierarchical Synthesis<br>🧩 Flattened Synthesis<br>⚖️ Key Differences Between Hierarchical & Flattened<br>💻 Multiple Module Netlist | [Synthesis Approaches](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_2#%EF%B8%8F-hierarchical-vs-flattened-synthesis) |
+| 🔹 **Flip-Flop Coding Styles** | ⏱ Asynchronous Reset D Flip-Flop<br>🔴 Asynchronous Set D Flip-Flop<br>⏹ Synchronous Reset D Flip-Flop | [Flip-Flop Coding](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_2#-flip-flop-coding-styles) |
+| 🖥 **Simulation Workflow** | 💻 Icarus Verilog Simulation<br>🌈 Viewing Waveforms in GTKWave | [Simulation Workflow](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_2#-simulation-and-synthesis-workflow) |
+| ⚡ **Synthesis Workflow** | 🛠 Synthesis with Yosys<br>🧮 Mapping Flip-Flops & Technology Mapping<br>🔹 Gate-Level Netlist Visualization | [Synthesis Workflow](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_2#-synthesis-with-yosys) |
+| 🧮 **Example Design** | i) Asynchronous Set D Flip-Flop<br> ii) Synchronous Reset D Flip-Flop | [Example Design](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_2#-similar-examples) |
+|✖️ **Multiple by 8 and its Netlist Generation**  | 📝 Viewing the Generated Netlist | [Mult by 8](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_2#%EF%B8%8F-multiple-by-8-and-its-netlist-generation) |
+| 📊 **Summary & Best Practices** | 📝 Key Takeaways<br>💡 RTL Coding Tips & Timing-Aware Practices | [Summary](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_2#-summary) |
 
 
 
