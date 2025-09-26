@@ -32,27 +32,16 @@ Today’s session will be filled with **optimization techniques, sequential logi
 
 ## 📚 Topics We’ll Explore  
 
-🎯 **Optimization Concepts**  
-  - 🚦 Constant Propagation (Sequential Logic)  
-  - 🗑️ Removal of Unused Outputs  
-  - 🔧 Logic Simplification at Netlist Level  
-
- 💻 **Verilog Practice**  
-  - 📝 Code Example with **Unused Outputs**  
-  - 🏗️ Top-Level Integration with Module Instantiations  
-
- 📊 **Analysis & Comparison**  
-  - 📑 Summary Tables (Source Code vs Netlist Result)  
-  - ⚡ Impact on Area & Power  
-
- ---
-
- ## 🖥️ Learning Style Today  
-
- 🌈 To make your learning more fun:  
- - 🎨 Colorful **Markdown sections** with emojis  
- - 📂 Structured **Table of Contents** for clarity  
- - 💡 Real **Examples + Results** to solidify concepts  
+| Section | Topics | Link |
+|---------|--------|------|
+| 1️⃣ Constant Propagation 🚦 | 🔹 What is Constant Propagation? <br> 🔹 How It Works <br> ⚡ Benefits in Combinational Logic <br> 🔵 Benefits in Sequential Logic <br> 📝 Examples & Diagrams | [✨ Explore](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#1-constant-propagation) |
+| 2️⃣ State Optimization 🧩 | 🔹 State Reduction Techniques <br> 🔹 State Encoding Schemes (Binary, One-Hot, Gray) <br> 🔹 Logic Minimization & Power Optimization <br> 📝 Example with 8→4 States <br> 🖼 Diagram Illustration | [🚀 Discover](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#2-state-optimization) |
+| 3️⃣ Cloning 🏗️ | 🔹 Purpose of Cloning in VLSI <br> 🔹 Steps: Identify, Duplicate, Redistribute, Place & Route <br> 📝 Example: Load Balancing in Combinational Blocks <br> ⚡ Timing Improvement | [🔍 Peek]() |
+| 4️⃣ Retiming ⏱️ | 🔹 Sequential Circuit Optimization <br> 🔹 Graph Representation of FFs & Logic <br> 🔹 Register Repositioning & Timing Analysis <br> ⚡ Example of Critical Path Shortening | [🛠️ Dive In]() |
+| 5️⃣ Labs on Optimization Techniques 🧪 | 🔹 Lab 1–4: Constant Propagation & Combinational Logic <br> 🔹 Lab 5–6: Sequential Circuits (D Flip-Flops) <br> 🔹 Netlist Generation & Waveform Analysis <br> 🖥️ Practical Verilog Examples | [💻 Inspect]() |
+| 6️⃣ Handling Unused Outputs 🗑️ | 🔹 Concept & Importance <br> 🔹 Verilog Code Examples with Unused Outputs <br> 🔹 Netlist Behavior & Optimization <br> ⚡ Summary Table: Source Code vs Netlist | [✨ Learn More]() |
+| 7️⃣ Summary & Key Learnings 📊 | 🔹 Recap of Constant Propagation, State Optimization, Cloning, Retiming, Labs, and Unused Outputs <br> 🔹 Practical Takeaways & Insights | [📘 Recap]() |
+ 
 
  ---
 
@@ -61,7 +50,7 @@ Today’s session will be filled with **optimization techniques, sequential logi
  💪 Let’s begin our journey 👉 **towards smarter digital design!**  
 
 
-# 1. Constant Propagation
+# 1️⃣ Constant Propagation 🚦
 
  Constant propagation is an important **optimization technique** in VLSI design and digital synthesis.
  It replaces variables or signals that hold **constant values** with their literal constants during logic synthesis. 
@@ -159,7 +148,7 @@ end
 Constant propagation in sequential logic focuses on simplifying conditional operations, counters, and state machines when signals are constant. This leads to more efficient, smaller, and faster circuits. 
 
 
-# 2. State Optimization 
+# 2️⃣ State Optimization 🧩 
 
 State optimization is an important technique in **finite state machine (FSM) design** for VLSI circuits. The goal is to make the FSM **smaller, faster, and more power-efficient** by reducing unnecessary states, optimizing state representation, and minimizing logic. --- 
 
@@ -180,7 +169,7 @@ Reduced States: S0, S1, S2, S3
 
 <img src="Images/download.png" alt="State Optimization" width="70%"/>
 
-# 3. Cloning 
+# 3️⃣ Cloning 🏗️ 
 
  Cloning is a **circuit optimization technique** in VLSI design where a logic cell or module is **duplicated** to improve performance, reduce power, or optimize timing. It is commonly used to **balance load**, **reduce     wire length**, and **improve signal propagation** along critical paths. --- 
  ## 🔎 How Cloning Works 
@@ -205,7 +194,7 @@ Cloned:
 AND1 ---> GateA, GateB, GateC
 AND1_clone ---> GateD, GateE, GateF
 ```
-# 4. Retiming
+# 4️⃣ Retiming ⏱️
 
 
 
@@ -232,7 +221,7 @@ FF1 ---> Logic Block A ---> FF1_new ---> Logic Block B ---> FF2
 ```
 
 
-## 5. Labs on Optimization Techniques 
+# 5️⃣ Labs on Optimization Techniques 🧪 
 
 
 ### Lab 1
@@ -498,7 +487,7 @@ const 5 :
 
 --- 
 
-# Handling Unused Outputs in Digital Circuits 
+# 6️⃣ Handling Unused Outputs 🗑️ 
 
 In digital circuit design, sometimes certain outputs of a module or combinational block are **not used** in the higher-level design. Optimizing these unused outputs can **reduce circuit area, power, and complexity**.
 
@@ -589,7 +578,7 @@ Code 2 :
 
 ---
 
-## Summary
+# 7️⃣ Summary & Key Learnings 📊
 
 - **Focus:** Optimization techniques for combinational and sequential circuits in digital design, with practical Verilog labs.  
 - **Topics Covered:**  
