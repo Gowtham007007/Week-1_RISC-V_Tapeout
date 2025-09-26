@@ -14,9 +14,37 @@
 ![SKY130](https://img.shields.io/badge/PDK-SKY130-blue?style=for-the-badge&logo=opensourceinitiative)
 ![Yosys](https://img.shields.io/badge/Tool-Yosys-green?style=for-the-badge&logo=gnu)
 ![Icarus](https://img.shields.io/badge/Simulator-Icarus_Verilog-orange?style=for-the-badge)
-![GTKWave](https://img.shields.io/badge/Waveform-GTKWave-lightgrey?style=for-the-badge)
+![GTKWave](https://img.shields.io/badge/Waveform-GTKWave-violet?style=for-the-badge)
 
 </div>
+
+---
+
+## 📚 Table of Contents – Day 5  
+
+- 🔮 **Inferred Latches**  
+  ✨ Incomplete If Statements  
+  ⚡ Incomplete Case Statements  
+  🎭 Partial Assignments  
+  🛡️ Best Practices & Solutions  
+
+- ♻️ **Loops in Verilog**  
+  🎯 For Loop in MUX  
+  🏗️ Generate Block  
+  📊 Simulation & Netlist Analysis  
+
+- 🎛️ **MUX & DEMUX Design**  
+  🧩 MUX with Generate & For  
+  🎚️ DEMUX using Case  
+  🎛️ DEMUX using For Loop  
+
+- ➕ **Ripple Carry Adder (RCA)**  
+  🌀 8-bit RCA using Generate Block  
+  📈 RTL Simulation Waveform  
+
+- 🏆 **Day 5 Summary**  
+  🖋️ Key Learnings  
+  🌟 Week 1 Wrap-Up  
 
 ---
 
@@ -36,11 +64,12 @@ Understand how incomplete conditional statements in Verilog can unintentionally 
 
 ---
 
-💡 **1. If – Else Statements in Verilog**
+## 💡 **1. If – Else Statements in Verilog**
 
 If – else statements control conditional execution inside procedural blocks such as **always**, **initial**, **tasks**, or **functions**.
 
 Syntax example
+```verilog
 
 if (condition) begin
 
@@ -51,6 +80,7 @@ end else begin
 // Code executes if condition is false
 
 end
+```
 
 ✨ Notes
 
@@ -78,7 +108,7 @@ end
 
 ---
 
-💡 **2. Inferred Latches**
+## 💡 **2. Inferred Latches**
 
 ⚠️ An **inferred latch** occurs when a variable inside a combinational always block is **not assigned in every possible path**.
 
@@ -106,7 +136,7 @@ end
 endmodule
 ```
 
-Problem :
+## ⚠️ Problem :
 
 - When **sel** is 0, `y` is never updated.
 - The tool infers a latch to preserve the old value of `y`.
@@ -127,7 +157,7 @@ Cover all possibilities explicitly.
 Corrected Example using case
 
 ```verilog
-module ex (
+module correct_example (
 
 input wire a, b, sel,
 
@@ -150,16 +180,17 @@ end
 endmodule
 ```
 
----
 
-🚀 **Takeaway**
+
+### 🚀 **Takeaway**
 
 By ensuring every signal inside a combinational block is assigned in **all possible paths**, you eliminate unintended latches, improving design reliability and synthesis quality.
 
+---
 
 ## 🎓 **Lab 1: Incomplete If Statement**
 
----
+
 
 🔍 **Objective:**
 
@@ -231,24 +262,23 @@ end
   
 
 
-💡 **Pro Tip:**
+### 💡 **Pro Tip:**
 
 Even in small combinational modules, **never leave branches incomplete**. This practice ensures RTL remains purely combinational and avoids inferred latches.
 
 
-
+---
 
 
 # 🎯 **Block 2: Problems in Case Statements – Incomplete and Wildcard Usage**
 
----
 
 🔍 **Objective:**
 
 Learn how incomplete or improperly used `case` statements in Verilog can lead to **inferred latches**, unpredictable behavior, and synthesis warnings.
 
 ---
-## 💻 ** Problematic Module Example:**
+### 💻 ** Problematic Module Example:**
 
 ```verilog
     module incomp_case(input i0 , input i1 , input i2 , input[1:0] sel , output reg y);
@@ -260,10 +290,10 @@ Learn how incomplete or improperly used `case` statements in Verilog can lead to
     end
     endmodule
 ```
-## Waveform Generated for the RTL Code Simulation :
+### Waveform Generated for the RTL Code Simulation :
 ![case](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/casewave.png)
 
-## ⚠️ Problem Description:
+### ⚠️ Problem Description:
 
 Only sel = 2'b00 and sel = 2'b01 are assigned values.
 
@@ -271,7 +301,7 @@ For sel = 2'b10 or 2'b11, y is not assigned, causing synthesis tools to infer a 
 
 This can lead to unintended memory behavior, functional mismatches, and timing hazards.
 
-## Netlist Generated for the RTL Code :
+### Netlist Generated for the RTL Code :
 ![case](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/casenet.png)
 
 
@@ -289,7 +319,7 @@ end
 ```
 
 
-## 💻 ** Overlapping Problematic Module Example:**
+### 💻 ** Overlapping Problematic Module Example:**
 
 ```verilog
 module bad_case (
@@ -325,14 +355,14 @@ endmodule
 
 ---
 
-## ⚠️ **Observation:**
+### ⚠️ **Observation:**
 
 - Using a **wildcard (`?`)** can unintentionally leave **some input combinations uncovered**.
 - For example, `2'b1?` covers `10` and `11`, but if not handled carefully, synthesis tools may still infer **latches** for other unassigned cases.
 - Incomplete coverage in `case` statements is a **common source of unintended storage elements** in combinational logic.
   
 
-## 🖼 Demo Images:
+### 🖼 Demo Images:
 
 Generated Netlist:
 ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/badcasenet.png)
@@ -342,7 +372,7 @@ Netlist Simulation Result:
 
 ⚠️ Observation: The simulation shows unexpected retention of previous values when the input does not match explicit cases. This confirms the latch inference issue.
 
-## ✅ Solution – Complete Coverage:
+### ✅ Solution – Complete Coverage:
 ```verilog
 
 always @(*) begin
@@ -357,7 +387,7 @@ end
 ```
 
 
-## 💡 Best Practices:
+### 💡 Best Practices:
 
 Avoid ambiguous wildcards unless fully intentional.
 
@@ -365,7 +395,7 @@ Always include a default: case to handle all unmatched inputs.
 
 Verify with simulation and synthesis reports to catch any inferred latches early.
 
-## ✨ Pro Tip:
+### ✨ Pro Tip:
 
 Covering all cases prevents glitches, ensures combinational behavior, and improves RTL reliability for downstream synthesis and layout.
 
@@ -379,7 +409,7 @@ Covering all cases prevents glitches, ensures combinational behavior, and improv
 🔹 Objective:
 Demonstrate a fully covered case statement in Verilog that avoids inferred latches and works correctly for all input combinations.
 
-## 💻 Example Module – Complete Case:
+### 💻 Example Module – Complete Case:
 ```verilog
 module comp_case (
     input i0, input i1, input i2, 
@@ -396,7 +426,7 @@ endmodule
 ```
 
 
-## ✨ Key Highlights:
+### ✨ Key Highlights:
 
 🌟 All input combinations are covered either explicitly or via default.
 
@@ -406,32 +436,36 @@ endmodule
 
 💡 Ensures predictable and robust RTL behavior.
 
-## 🖼 Demo Images:
+### 🖼 Demo Images:
 
 
-Simulation Result:
+* Simulation Result:
 ![Simulation](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/compcasewave.png)
 
-Generated Netlist:
+
+* Generated Netlist:
 ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/compcasenet.png)
 
 
 
-Observation: The simulation confirms that outputs are correct for all input combinations and no latches are inferred.
+### Observation: 
+```
+The simulation confirms that outputs are correct for all input combinations and no latches are inferred.
+```
 
-✅ Best Practices Reminder:
+### ✅ Best Practices Reminder:
 
-Always cover all possible values of your case selector.
+ * Always cover all possible values of your case selector.
 
-Use a default: branch for any remaining combinations.
+ * Use a default: branch for any remaining combinations.
 
-Validate RTL behavior via simulation before synthesis.
+ * Validate RTL behavior via simulation before synthesis.
 
-Combine good coding practices with clear comments to make designs readable.
+ * Combine good coding practices with clear comments to make designs readable.
 
 ---
 
-🎯 Pro Tip:
+### 🎯 Pro Tip:
 
 A complete case statement is one of the simplest ways to write safe combinational logic and avoid subtle synthesis bugs.
 
@@ -439,9 +473,9 @@ Use badges, emojis, and descriptive comments in documentation to make your repos
 
 
 
- ## 🎉 Demo: Partial Assignment in Case Statements – Beware of Unassigned Signals
+## 🎉 Demo: Partial Assignment in Case Statements – Beware of Unassigned Signals
 
-🔹 **Problem Overview:**
+### 🔹 **Problem Overview:**
 
 - When **multiple outputs** are assigned inside a case statement, it’s crucial that **all outputs are assigned in all branches**.
 - Failure to do so can lead to **inferred latches** for the unassigned signals.
@@ -449,7 +483,7 @@ Use badges, emojis, and descriptive comments in documentation to make your repos
 
 ---
 
-💻 **Partial Assignment Code:**
+### 💻 **Partial Assignment Code:**
 
 ```verilog
 module partial_case_assign (
@@ -476,16 +510,16 @@ endmodule
 
 ---
 
-🖼 **Demo Image – Generated Netlist:**
+### 🖼 **Demo Image – Generated Netlist:**
 
 ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/partialnet.png)
 
 > Observation: The netlist shows that x is inferred as a latch in the branch where it is not explicitly assigned. This is undesirable for combinational logic.
-> 
+
 
 ---
 
-✅ **Solution – Ensure All Outputs Are Assigned:**
+### ✅ **Solution – Ensure All Outputs Are Assigned:**
 
 ```verilog
 always @(*) begin
@@ -507,9 +541,8 @@ end
 
 ```
 
----
 
-💡 **Key Takeaways:**
+### 💡 **Key Takeaways:**
 
 - Always **assign every output signal in all branches** of a case statement.
 - Use **default branches** to cover remaining combinations.
@@ -518,7 +551,7 @@ end
 
 ---
 
-🎯 **Pro Tip:**
+### 🎯 **Pro Tip:**
 
 - In multi-output case statements, **think of each output independently** and make sure no branch leaves any signal undefined.
 - Combine this with **visual netlist checks** to confirm all assignments are correctly mapped.
@@ -555,11 +588,12 @@ end
 
 # Block 3 : 🔄 For Loops in Verilog
 
-🔹 Overview
+### 🔹 Overview
 
 A for loop in Verilog is used inside procedural blocks (always, initial, tasks/functions) to execute repetitive statements based on a loop counter.
 
-🔹 Syntax
+### 🔹 Syntax
+
 ```verilog
 for (initialization; condition; increment) begin
     // Statements to execute
@@ -567,7 +601,7 @@ end
 ```
 
 
-Key Points:
+### Key Points:
 
 ✅ Must be inside procedural blocks.
 
@@ -575,7 +609,7 @@ Key Points:
 
 ✅ Commonly used for MUXes, arrays, and repetitive assignments.
 
-🔹 Example: 4-to-1 MUX Using a For Loop
+### 🔹 Example: 4-to-1 MUX Using a For Loop
 ```verilog
 module mux_4to1_for_loop (
     input wire [3:0] data, // 4 input lines
@@ -593,7 +627,7 @@ module mux_4to1_for_loop (
 endmodule
 ```
 
-⚡ Explanation
+### ⚡ Explanation
 
 Default Assignment: y = 1'b0; prevents inferred latches. ⚠️
 
@@ -603,7 +637,7 @@ Condition Check: if (i == sel) selects the correct input line. ✅
 
 Scalable Design: Easy to extend for 8-to-1, 16-to-1 MUXes without writing long case statements.
 
-🌟 Advantages
+### 🌟 Advantages
 
 ✅ Reduces code repetition.
 
@@ -612,7 +646,11 @@ Scalable Design: Easy to extend for 8-to-1, 16-to-1 MUXes without writing long c
 ✅ Synthesizes to the same hardware as a case-based MUX.
 
 ---
+
+### Example 
+
 Lets have a look at a ``Example`` code along with its waveform and Netlist Generation : 
+
 ```verilog
     module mux_generate (
     input i0, input i1, input i2, input i3,
@@ -631,7 +669,7 @@ end
 endmodule
 ```
 
-## 🔎 Simulation Waveform 📈
+### 🔎 Simulation Waveform 📈
 
 - The simulation waveform will illustrate how the **for loop selects one of the 4 inputs** (`i0–i3`) based on the **2-bit selector**.
 - At each toggle of `sel`, the output `y` reflects the **corresponding input line** ✅.
@@ -640,7 +678,7 @@ endmodule
 
 ---
 
-## 🏗️ Netlist View 🖼️
+### 🏗️ Netlist View 🖼️
 
 - When synthesized, the netlist will explicitly show a **4-to-1 multiplexer** built from logic gates.
 - The `for` loop in RTL does **not remain a loop in hardware**; instead, it generates a real mux structure ⚡.
@@ -651,7 +689,7 @@ endmodule
 
 ---
 
-## 🌟 Why Use For Loop Here?
+### 🌟 Why Use For Loop Here?
 
 - 🧩 **Compact Code** → Instead of writing multiple `case` or `if` blocks, a simple loop describes the logic.
 - ⚙️ **Automation** → Cleaner RTL for scalable designs.
@@ -659,7 +697,7 @@ endmodule
 
 ---
 
-## ✅ Advantages of Generate Blocks
+### ✅ Advantages of Generate Blocks
 
 - ⚡ **Automation** – Save time writing repetitive instantiations.
 - 🔄 **Scalability** – Easy to extend from 4 gates → 8, 16, or more by changing loop bounds.
@@ -672,12 +710,8 @@ endmodule
 
 
 
-
-
-
 # ⚙️ Block 4: Generate Blocks in Verilog 🧩
 
----
 
 ## 🔹 What is a Generate Block?
 
@@ -685,7 +719,7 @@ A **generate block** in Verilog is used to **create repeated hardware structures
 
 It allows you to **automatically replicate logic or module instances** instead of writing them manually.
 
-✨ Common use cases:
+### ✨ Common use cases:
 
 - Repeating **logic structures** (e.g., gates, adders).
 - Instantiating **multiple modules**.
@@ -693,7 +727,7 @@ It allows you to **automatically replicate logic or module instances** instead o
 
 ---
 
-## 🔹 Key Ingredients
+### 🔹 Key Ingredients
 
 - **`genvar`** → Special variable type used in `generate` loops.
 - **`for` loop inside generate`** → Defines how many copies of the logic/module to create.
@@ -701,7 +735,7 @@ It allows you to **automatically replicate logic or module instances** instead o
 
 ---
 
-## 🔹 Example: Generate AND Gates
+### 🔹 Example: Generate AND Gates
 
 ```verilog
 genvar i;
@@ -717,11 +751,10 @@ endgenerate
 
 No need to write 4 separate instantiations manually 🚀.
 
-
+---
  
 # Block 5 : 🔀 DEMUX Implementations – Case vs For Loop
 
----
 
 ## 📌 1:8 DEMUX Using Case Statement 🧾
 
@@ -765,7 +798,7 @@ No need to write 4 separate instantiations manually 🚀.
 - ♻️ **For Loop** → Cleaner code, scalable for larger DEMUX structures.
 - 🏁 **Netlist Result** → Both approaches synthesize into identical hardware.
 
-✨ **Takeaway:** Both styles are valid — but **for loops provide elegance** in code, especially when dealing with larger DEMUX or repetitive logic! 🎯
+### ✨ **Takeaway:** Both styles are valid — but **for loops provide elegance** in code, especially when dealing with larger DEMUX or repetitive logic! 🎯
 
 ---
 
@@ -822,7 +855,7 @@ endmodule
 
 ---
 
-# 🔍 **Explanation**
+### 🔍 **Explanation**
 
 - ✨ `genvar` + `generate` → creates repeated instances of Full Adders (FA).
 - 💡 Carry of each FA is passed to the next FA in sequence → **Ripple Carry**.
@@ -831,7 +864,7 @@ endmodule
 
 ---
 
-# 🎬 **RTL Simulation View**
+### 🎬 **RTL Simulation View**
 ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/rcatb.png)
 
 - `sum = num1 + num2` (8-bit addition with 1-bit carry-out).
@@ -839,7 +872,7 @@ endmodule
 
 ---
 
-# ⭐ Advantages of Generate Block
+## ⭐ Advantages of Generate Block
 
 - 🔄 Eliminates manual instantiation of 8 FAs.
 - 📏 Scales easily to larger adders.
@@ -847,10 +880,10 @@ endmodule
 
 
 # Summary
-
+<div align = center>
 # 🌟 **Day 5: Generate Blocks, Mux, Demux & RCA** 🚀
+</div>
 
----
 
 ## 🔹 **1. Case Statements & Good Practices**
 
@@ -862,7 +895,7 @@ endmodule
     - `case` → parallel comparison
 - 🚫 Avoid **overlapping cases** → may lead to *RTL vs Netlist mismatches*.
 
----
+
 
 ## 🔹 **2. For Loops for Multiplexers**
 
@@ -871,7 +904,7 @@ endmodule
 - 🔬 Waveform shows **output following selected input**.
 - 🖼️ Netlist → Synthesizer expands loop into multiple gates.
 
----
+
 
 ## 🔹 **3. Demultiplexer Designs**
 
@@ -887,7 +920,7 @@ endmodule
 - Compact, scalable, avoids long case structures.
 - Both **waveform** 📈 and **netlist** 🖼️ match with the case-based version.
 
----
+
 
 ## 🔹 **4. Ripple Carry Adder (RCA) with Generate Block**
 
@@ -900,7 +933,7 @@ endmodule
     - Cleaner code ✔️
     - Hardware-accurate ✔️
 
----
+
 
 # 📖 **Overall Takeaways from Day 5**
 
@@ -912,11 +945,12 @@ endmodule
 
 ✅ Designed a **scalable RCA** with generate block 🏗️.
 
+
 ✨ Today was all about **automation, scalability, and clean coding in Verilog** — making designs **reusable, modular, and synthesizable** 🔬⚡.
 
-# 🌟 **Day 5 Completed – Week 1 Wrapped Up!** 🎉
-
 ---
+
+# 🌟 **Day 5 Completed – Week 1 Wrapped Up!** 🎉
 
 ## ✨ *"Great designs aren’t written once, they’re generated infinitely."* ⚡
 
