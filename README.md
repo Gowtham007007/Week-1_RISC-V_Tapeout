@@ -58,13 +58,13 @@ This workshop is designed for students, hobbyists, and engineers interested in:
 
 The workshop is organized by day, each with its own folder and README:
 
-| Day | Topic | Tools | Output |
-|-----|-------|-------|--------|
-| 📘 Day 1 | Verilog RTL Basics | `iverilog`, `gtkwave` | ✅ Waveform 📈 |
-| ⚡ Day 2 | Timing Libraries & Flip-Flops | `yosys` | 📊 Netlist 🗂️ |
-| 🧩 Day 3 | Combinational & Sequential Optimization | `yosys`, `abc` | 🔧 Optimized Circuit ⚡ |
-| 🔒 Day 4 | Gate-Level Simulation (GLS) | `iverilog`, `gtkwave` | 🛠 Verification ✔️ |
-| 🏁 Day 5 | Advanced Synthesis & Optimization | SKY130 | 🚀 Final Report 📜 |
+| Day | Topic | Tools | Output | Links |
+|-----|-------|-------|--------|-------|
+| 📘 Day 1 | Verilog RTL Basics | `iverilog`, `gtkwave` | ✅ Waveform 📈 |[Verilog RTL Basics](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_1)|
+| ⚡ Day 2 | Timing Libraries & Flip-Flops | `yosys` | 📊 Netlist 🗂️ |[Timing Libraries & Flip-Flops](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_2)
+| 🧩 Day 3 | Combinational & Sequential Optimization | `yosys`, `abc` | 🔧 Optimized Circuit ⚡ |[Combinational & Sequential Optimization](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3)
+| 🔒 Day 4 | Gate-Level Simulation (GLS) | `iverilog`, `gtkwave` | 🛠 Verification ✔️ |[Gate-Level Simulation (GLS)](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_4)
+| 🏁 Day 5 | Advanced Synthesis & Optimization | SKY130 | 🚀 Final Report 📜 |[Advanced Synthesis & Optimization](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_5)
 
 ---
 
