@@ -147,6 +147,7 @@ end
 
 Constant propagation in sequential logic focuses on simplifying conditional operations, counters, and state machines when signals are constant. This leads to more efficient, smaller, and faster circuits. 
 
+---
 
 # 2️⃣ State Optimization 🧩 
 
@@ -165,21 +166,24 @@ State optimization is an important technique in **finite state machine (FSM) des
 Original States: S0, S1, S2, S3, S4, S5, S6, S7
 Reduced States: S0, S1, S2, S3
 ```
-# Illustartion
+## Illustartion
 
 <img src="Images/download.png" alt="State Optimization" width="70%"/>
 
+---
+
 # 3️⃣ Cloning 🏗️ 
 
- Cloning is a **circuit optimization technique** in VLSI design where a logic cell or module is **duplicated** to improve performance, reduce power, or optimize timing. It is commonly used to **balance load**, **reduce     wire length**, and **improve signal propagation** along critical paths. --- 
+ Cloning is a **circuit optimization technique** in VLSI design where a logic cell or module is **duplicated** to improve performance, reduce power, or optimize timing. It is commonly used to **balance load**, **reduce     wire length**, and **improve signal propagation** along critical paths. 
+ 
  ## 🔎 How Cloning Works 
  1. **Identify Critical Paths** - Use **timing analysis tools** to find slow or heavily loaded paths in the design. -     Critical paths are the targets for optimization. 
  2. **Duplicate the Target Cell/Module** - Create an **identical copy** of the logic cell or module that contributes to the critical path delay.
  3. **Redistribute    Connections** - Split the fan-out of the original cell between the original and the cloned cell. - This balances the load on each output, reducing delay.
  4. **Place and Route the Cloned Cell** - Position the cloned cell in a location that **minimizes wire length** and ensures good timing.
-5. **Verify Improvements** - Re-run **timing and power analysis** to ensure the cloning achieves the desired optimization. - Adjust placement or connections if necessary.
+ 5. **Verify Improvements** - Re-run **timing and power analysis** to ensure the cloning achieves the desired optimization. - Adjust placement or connections if necessary.
    
-   ---
+---
 
  
  ## 🟢 Cloning Example Suppose a combinational block AND1 drives 6 heavy load gates, causing a timing bottleneck:
@@ -194,11 +198,13 @@ Cloned:
 AND1 ---> GateA, GateB, GateC
 AND1_clone ---> GateD, GateE, GateF
 ```
+
+---
+
 # 4️⃣ Retiming ⏱️
 
 
-
-  Retiming is a **circuit optimization technique** used in VLSI design to improve **performance, timing, and sometimes power efficiency** by repositioning **registers (flip-flops)** in a sequential circuit without altering its functionality.
+Retiming is a **circuit optimization technique** used in VLSI design to improve **performance, timing, and sometimes power efficiency** by repositioning **registers (flip-flops)** in a sequential circuit without altering its functionality.
 
 
 ## 🔎 How Retiming Works 
@@ -206,25 +212,28 @@ AND1_clone ---> GateD, GateE, GateF
 2. **Register Repositioning** - Move registers across combinational logic blocks to **balance path delays**. - The goal is to **shorten the longest path** (critical path) and allow faster clock operation.
 3. **Constraints Analysis** - Ensure that repositioning maintains **functional correctness** of the circuit. - Consider **setup, hold, and timing constraints** to prevent timing violations.
 4. **Optimization** - Adjust register positions to **minimize the clock period** or **optimize power**. - Retiming can reduce critical path delay, allowing higher operating frequencies.
-    ---
+   
+---
    
 ## 🟢 Example Suppose a sequential circuit has a long critical path between two flip-flops:
 
 ```text
 FF1 ---> Logic Block A ---> Logic Block B ---> FF2
 ```
-After retiming:
+
+### After retiming:
 
 
 ```text
 FF1 ---> Logic Block A ---> FF1_new ---> Logic Block B ---> FF2
 ```
 
+---
 
 # 5️⃣ Labs on Optimization Techniques 🧪 
 
 
-### Lab 1
+## Lab 1
 
 Below is the Verilog code for Lab 1:
 
@@ -248,7 +257,7 @@ opt_clean -purge
 ![Lab 1 Output](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/opt_check.png) 
 ---
 
-### Lab 2 Verilog code:
+## Lab 2 Verilog code:
 
 
 ```verilog
@@ -265,7 +274,8 @@ endmodule
 ![Lab 2 Output](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/opt_check2.png) 
 
 ---
-### Lab 3 Verilog code:
+
+## Lab 3 Verilog code:
 
 ```verilog
 module opt_check2 (input a , input b , output y);
@@ -280,7 +290,7 @@ y = a ? 1 : b (outputs 1 when a is true, otherwise b).
 
 --- 
 
-### Lab 4 Verilog code:
+## Lab 4 Verilog code:
 
 ```verilog
 module opt_check4 (input a , input b , input c , output y);
@@ -300,7 +310,7 @@ module opt_check4 (input a , input b , input c , output y);
  
  ---
  
- # Verilog Source Code vs Synthesized Netlist
+ ## Verilog Source Code vs Synthesized Netlist
  
  In VLSI design, understanding the difference between **Verilog source code** and the **synthesized netlist** is crucial. 
  - **Verilog Source Code**: High-level, human-readable description of the design using modules, wires, and assignment statements.
@@ -309,6 +319,7 @@ module opt_check4 (input a , input b , input c , output y);
  ---
  
 ## 🔹 Source Code (Verilog) 
+
 - Describes the design **at a high level**.
 - Uses modules, wires, and assignment statements to define the desired behavior and structure.
 - Includes abstract operations like assign, module instantiation, logical operators (AND, OR, multiplication, etc.).
@@ -539,7 +550,7 @@ endmodule
 ```
 
 
- In the top module, unused_out from the submodule is **not connected** to anything and not used in further logic. The synthesis tool **removes any hardware** solely responsible for driving unused_out, unless forcedotherwise (some tools can drive it to zero). 
+In the top module, unused_out from the submodule is **not connected** to anything and not used in further logic. The synthesis tool **removes any hardware** solely responsible for driving unused_out, unless forcedotherwise (some tools can drive it to zero). 
  
 --- 
 ## 🔹 Netlist Behavior with Unused Outputs 
