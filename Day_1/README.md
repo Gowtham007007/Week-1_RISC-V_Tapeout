@@ -21,13 +21,13 @@
 ---
 | Section | Topics | Link |
 |---------|--------|------|
-| 1️⃣  **Simulator & Testbench Essentials** | - Simulator Overview <br> - Design Explanation <br> - Testbench Setup | 🔗 [Simulator & Testbench]() |
-| 2️⃣  **Getting Started with Icarus Verilog** 💻| - Simulation Flow <br> - Generating Waveform Files (.vcd) | 🔗 [Icarus Verilog Setup]() |
-| 3️⃣  **Lab: 2-to-1 Multiplexer Simulation** 🧪|- Clone Repository <br> - Install Tools <br> - Compile & Run <br> - Waveform Visualization | 🔗 [Mux Simulation Lab]() |
-| 4️⃣  **Multiplexer Verilog Code Analysis** 🔍|- Module Code <br> - Logic Explanation | 🔗 [Code Analysis]() |
-| 5️⃣  **Introduction to Yosys & Gate Libraries** ⚡|- What is Yosys? <br> - Features of Yosys <br> - Understanding Gate Library Flavors | 🔗 [Yosys & Libraries]() |
-| 6️⃣  **Synthesis Lab with Yosys** 🏗️ |- Step-by-Step Synthesis Flow <br> - Visualizing Gate-Level Netlist <br> - Exporting Netlist | 🔗 [Yosys Synthesis Lab]() |
-| 7️⃣  **Workshop Summary & Key Takeaways** 📝 |Quick Recap | 🔗 [Summary]() |
+| 1️⃣  **Simulator & Testbench Essentials** | - Simulator Overview <br> - Design Explanation <br> - Testbench Setup | 🔗 [Simulator & Testbench](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_1#1%EF%B8%8F%E2%83%A3--simulator--testbench-essentials) |
+| 2️⃣  **Getting Started with Icarus Verilog** 💻| - Simulation Flow <br> - Generating Waveform Files (.vcd) | 🔗 [Icarus Verilog Setup](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_1#2%EF%B8%8F%E2%83%A3--getting-started-with-icarus-verilog-) |
+| 3️⃣  **Lab: 2-to-1 Multiplexer Simulation** 🧪|- Clone Repository <br> - Install Tools <br> - Compile & Run <br> - Waveform Visualization | 🔗 [Mux Simulation Lab](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_1#3%EF%B8%8F%E2%83%A3--lab-2-to-1-multiplexer-simulation-) |
+| 4️⃣  **Multiplexer Verilog Code Analysis** 🔍|- Module Code <br> - Logic Explanation | 🔗 [Code Analysis](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_1#4%EF%B8%8F%E2%83%A3--multiplexer-verilog-code-analysis-) |
+| 5️⃣  **Introduction to Yosys & Gate Libraries** ⚡|- What is Yosys? <br> - Features of Yosys <br> - Understanding Gate Library Flavors | 🔗 [Yosys & Libraries](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_1#5%EF%B8%8F%E2%83%A3--introduction-to-yosys--gate-libraries-) |
+| 6️⃣  **Synthesis Lab with Yosys** 🏗️ |- Step-by-Step Synthesis Flow <br> - Visualizing Gate-Level Netlist <br> - Exporting Netlist | 🔗 [Yosys Synthesis Lab](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_1#6%EF%B8%8F%E2%83%A3--synthesis-lab-with-yosys-%EF%B8%8F) |
+| 7️⃣  **Workshop Summary & Key Takeaways** 📝 |Quick Recap | 🔗 [Summary](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_1#7%EF%B8%8F%E2%83%A3--workshop-summary--key-takeaways-) |
 
 
 
