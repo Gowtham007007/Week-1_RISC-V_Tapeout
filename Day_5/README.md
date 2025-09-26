@@ -28,7 +28,7 @@
 |---------|--------|------|
 | 🎯 Block 1: Inferred Latches | ✨ Incomplete If Statements <br> ⚡ Incomplete Case Statements <br> 🎭 Partial Assignments <br> 🛡️ Best Practices & Solutions | [🚀 Dive In](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_5#-block-1-inferred-latches--hidden-hazards-in-rtl-design) |
 | 🔄 Block 2: Problems in Case Statements | ⚠️ Incomplete Case Statements <br> ❌ Wildcard Usage <br> ✅ Complete Coverage & Default Case <br> 🖼 Demo Images & Netlist | [🔧 Explore](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_5#-block-2-problems-in-case-statements--incomplete-and-wildcard-usage) |
-| ♻️ Block 3: For Loops in Verilog | 🎯 For Loop in MUX <br> 🏗️ RTL Simulation & Waveforms <br> ⚡ Explanation & Advantages | [🔄 View Lab](---for-loops-in-verilog) |
+| ♻️ Block 3: For Loops in Verilog | 🎯 For Loop in MUX <br> 🏗️ RTL Simulation & Waveforms <br> ⚡ Explanation & Advantages | [🔄 View Lab](#block-3---for-loops-in-verilog) |
 | 🧩 Block 4: Generate Blocks in Verilog | 🔹 What is Generate Block? <br> 🔹 Key Ingredients <br> 🔹 Example: AND Gates & Module Replication | [🖥️ Check Code]() |
 | 🔀 Block 5: DEMUX Implementations | 📌 1:8 DEMUX Using Case <br> 📌 1:8 DEMUX Using For Loop <br> ⚖️ Case vs For Loop Comparison | [⚡ Simulate]() |
 | ⚡ Block 6: Ripple Carry Adder (RCA) | 🟢 8-bit RCA using Generate Block <br> 🏗️ Netlist View <br> 📈 RTL Simulation <br> ⭐ Advantages of Generate Block | [🌟 Learn More]() |
