@@ -1,13 +1,20 @@
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/GLS-Simulation-blue?style=for-the-badge" alt="GLS"></a>
+
+
+
+<div align="center">
+
+  # 🎉✨ **Welcome to Day 4: GLS & Verilog Adventures** ✨🎉 
+  
+  <a href="#"><img src="https://img.shields.io/badge/GLS-Simulation-purple?style=for-the-badge" alt="GLS"></a>
   <a href="#"><img src="https://img.shields.io/badge/Labs-HandsOn-green?style=for-the-badge" alt="Labs"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Verilog-Coding-orange?style=for-the-badge" alt="Verilog"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Synthesis-Verification-red?style=for-the-badge" alt="Synthesis"></a>
-</p>
+  <a href="#"><img src="https://img.shields.io/badge/Verilog-Coding-red?style=for-the-badge" alt="Verilog"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Synthesis-Verification-blue?style=for-the-badge" alt="Synthesis"></a>
 
-# 🎉✨ **Welcome to Day 4: GLS & Verilog Adventures** ✨🎉 
 
-> "From RTL to Gates – Making Your Designs Real!" 💡💻
+  ##  "From RTL to Gates – Making Your Designs Real!" 💡💻
+</div>
+
+
 
 ---
 
