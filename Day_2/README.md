@@ -51,7 +51,7 @@ Focus on advanced RTL design concepts, emphasizing **timing-aware coding ⏱️*
 ---
 
 
-# ⏱️ Timing Libraries
+## ⏱️ Timing Libraries
 
 ### 🌌 SKY130 PDK Overview
 
@@ -117,19 +117,19 @@ Reports may require extra configuration.
 
 <img src="Images/hierarchical_netlist.jpeg" alt="Hierarchical Netlist" width="70%"/>
 
-# ⚡ Flattened Synthesis
+## ⚡ Flattened Synthesis
 
 Definition: Merges all modules into a single flat netlist, removing hierarchy.
 
 How it Works: The flatten command in Yosys collapses hierarchy for whole-design optimizations.
 
-## ✅ Advantages:
+### ✅ Advantages:
 
 Enables aggressive cross-module optimizations.
 
 Unified netlist may simplify downstream processes.
 
-## ❌ Disadvantages:
+### ❌ Disadvantages:
 
 Longer runtime for large designs.
 
@@ -137,13 +137,13 @@ Loss of hierarchy complicates debugging.
 
 Can increase memory usage and netlist complexity.
 
-## Example:
+### Example:
 
 <img src="Images/flattened.jpeg" alt="Flattened Netlist" width="70%"/>
 
 ⚠️ Important: Hierarchical synthesis preserves sub-modules; flattening produces a netlist from the ground up.
 
-# 📂 Multiple_Module_Netlist
+## 📂 Multiple_Module_Netlist
 
 ### Open the Generated Netlist:
 
@@ -165,11 +165,11 @@ write_verilog -noattr multiple_modules_hier.v
 | Output Complexity | Modular structure | Single, complex netlist |
 | Use Case | Modularity, analysis, reporting | Maximum optimization |
 
-# 🔹 Flip-Flop Coding Styles
+## 🔹 Flip-Flop Coding Styles
 
 Flip-flops are fundamental sequential elements used to store binary data. Below are efficient coding styles for different reset/set behaviors.
 
-## ⏹ Asynchronous Reset D Flip-Flop
+### ⏹ Asynchronous Reset D Flip-Flop
 
 ```verilog
 module dff_asyncres (input clk, input async_reset, input d, output reg q);
@@ -200,7 +200,7 @@ endmodule
 
 Asynchronous set: Overrides clock, setting q to 1 immediately.
 
-# ⏱️ Synchronous Reset D Flip-Flop
+### ⏱️ Synchronous Reset D Flip-Flop
 
 ```verilog
 
@@ -216,9 +216,9 @@ endmodule
 
 Synchronous reset: Takes effect only on the clock edge.
 
-# 🖥 Simulation and Synthesis Workflow
+## 🖥 Simulation and Synthesis Workflow
 
-## 💻 Icarus Verilog Simulation
+### 💻 Icarus Verilog Simulation
 
 ### Compile:
 
@@ -241,50 +241,50 @@ gtkwave tb_dff_asyncres.vcd
 
 <img src="Images/dff_asyncres.jpeg" alt="Asynch - Reset" width="70%"/>
 
-# ⚡ Synthesis with Yosys
+## ⚡ Synthesis with Yosys
 
-## Start Yosys:
+### Start Yosys:
 
 ```bash
 yosys
 ```
 
-## Read Liberty library:
+### Read Liberty library:
 
 ```bash
 
 read_liberty -lib /address/to/your/sky130/file/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-## Read Verilog code:
+### Read Verilog code:
 
 ```bash
 
 read_verilog /path/to/dff_asyncres.v
 ```
 
-## Synthesize:
+### Synthesize:
 
 ```bash
 
 synth -top dff_asyncres
 ```
 
-## Map flip-flops:
+### Map flip-flops:
 
 ```bash
 
 dfflibmap -liberty /address/to/your/sky130/file/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-## Technology mapping:
+### Technology mapping:
 
 ```bash
 
 abc -liberty /address/to/your/sky130/file/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-## Visualize gate-level netlist:
+### Visualize gate-level netlist:
 
 ```bash
 
@@ -293,19 +293,19 @@ show
 
 <img src="Images/gate_level_netlist.jpeg" alt="Gate Level Netlist" width="70%"/>
 
-# 🔹 Similar Examples
+## 🔹 Similar Examples
 
-## i) Asynchronous Set D Flip-Flop:
+### i) Asynchronous Set D Flip-Flop:
 
 <img src="Images/dff_async_set.jpeg" alt="Asynch - Set" width="70%"/>
 
-## ii) Synchronous Reset D Flip-Flop:
+### ii) Synchronous Reset D Flip-Flop:
 
 <img src="Images/dff_syncres.jpeg" alt="Synch - Reset" width="70%"/>
 
-# ✖️ Multiple by 8 and its Netlist Generation
+## ✖️ Multiple by 8 and its Netlist Generation
 
-## 📝 Viewing the Generated Netlist
+### 📝 Viewing the Generated Netlist
 
 Once the design (e.g., 8-bit multiplier) is synthesized using Yosys, export the netlist:
 
@@ -331,7 +331,7 @@ endmodule
 
 <img src="Images/multiple8.jpeg" alt="Library file" width="70%"/>
 
-# 🏁 Summary
+## 🏁 Summary
 
 This overview provides practical insights into timing libraries, synthesis strategies, and reliable flip-flop coding practices.
 Continue experimenting with these concepts to deepen understanding of RTL design and synthesis. 🚀
