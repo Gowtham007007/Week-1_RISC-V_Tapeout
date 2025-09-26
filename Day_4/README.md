@@ -36,7 +36,7 @@ We’ll explore:
 ---
 
 
-# 🗂️ Day 4: Table of Contents 🛠️💡
+## 🗂️ Day 4: Table of Contents 🛠️💡
 
 | Section | Topics | Link |
 |---------|--------|------|
@@ -57,14 +57,14 @@ We’ll explore:
 ---
 
 
-#  ⚡️ Gate Level Simulation
+##  ⚡️ Gate Level Simulation
 
 Gate-Level Simulation (**GLS**) is a **critical verification step** in the VLSI design flow where the **synthesized gate-level netlist** of a digital circuit is simulated.  
 It ensures that what you designed at RTL truly works at the gate level, **with real delays and test structures** ✅  
 
 ---
 
-## ❓ What is GLS ?
+### ❓ What is GLS ?
 GLS is the process of simulating a **post-synthesis netlist** (a circuit represented as logic gates) instead of high-level RTL.  
 It helps to validate the following aspects:
 
@@ -81,7 +81,7 @@ It helps to validate the following aspects:
 
 ---
 
-## 💡 Why Perform GLS?
+### 💡 Why Perform GLS?
 - ✅ **Synthesis Validation** → Ensures synthesis tools correctly map RTL → gates.  
 - ⏳ **Timing Verification** → Detects violations using **SDF (Standard Delay Format)** back-annotation.  
 - 🧬 **Testability Checks** → Verifies scan chains and DFT features.  
@@ -89,14 +89,14 @@ It helps to validate the following aspects:
 
 ---
 
-## 🕐 When is GLS Performed?
+### 🕐 When is GLS Performed?
 GLS is usually done at **two critical points**:
 1. **After Synthesis** – Verify RTL → Gate translation.  
 2. **Before Physical Design (P&R)** – Catch timing/test issues early.  
 
 ---
 
-## 🧭 Types of GLS
+### 🧭 Types of GLS
 
 | Type             | Description                                                                 |
 |------------------|-----------------------------------------------------------------------------|
@@ -105,7 +105,7 @@ GLS is usually done at **two critical points**:
 
 ---
 
-## ⏳ Delay Annotation
+### ⏳ Delay Annotation
 
 GLS often uses **SDF Back-Annotation** to model **real delays** from synthesis or P&R:
 - **Without annotation** → Ideal behavior, unrealistic.  
@@ -116,9 +116,9 @@ GLS often uses **SDF Back-Annotation** to model **real delays** from synthesis o
 ---
 
 
-# 🧪 Lab Experiment
+## 🧪 Lab Experiment
 
-## 🔹Ternary Operator MUX
+### 🔹Ternary Operator MUX
 
 In this lab, we design a **2:1 Multiplexer** using the **ternary operator** in Verilog.  
 The multiplexer selects one of two inputs (`i0`, `i1`) based on the control signal (`sel`) and drives it to the output (`y`).  
@@ -143,7 +143,7 @@ endmodule
 
 ---
 
-## Netlist of RTL Code :
+### Netlist of RTL Code :
 
 ### Synthesis Using Yosys
 
@@ -165,7 +165,7 @@ _Follow the standard Yosys synthesis flow._
 ---
 
 
-## Waveform of Netlist Simulation :
+### Waveform of Netlist Simulation :
 
 ### Gate-Level Simulation (GLS) of MUX
 
@@ -181,7 +181,7 @@ iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v ternary_operator_mux.v
 ---
 
 
-# ⚡️🔀 Synthesis vs Simulation Mismatch
+## ⚡️🔀 Synthesis vs Simulation Mismatch
 
 
 A **synthesis-simulation mismatch** occurs when the **simulation results of RTL (pre-synthesis)** do **not match** the **gate-level netlist (post-synthesis)** or actual hardware behavior.  
@@ -190,7 +190,7 @@ This is a critical issue in VLSI design because it can cause **functional failur
 
 ---
 
-## 🔍 Common Causes of Mismatch 🕵️‍♂️
+### 🔍 Common Causes of Mismatch 🕵️‍♂️
 
 | Cause                           | Description                                                                 |
 |---------------------------------|-----------------------------------------------------------------------------|
@@ -201,7 +201,7 @@ This is a critical issue in VLSI design because it can cause **functional failur
 
 
 
-## 💡 Key Points to Avoid Mismatch 🌟✨
+### 💡 Key Points to Avoid Mismatch 🌟✨
 
 - ✅ **Always write synthesizable RTL** – avoid unsupported constructs. 📝  
 - ✅ **Use complete and unambiguous coding** – cover all branches, define all signals. ✅🔧  
@@ -211,7 +211,7 @@ This is a critical issue in VLSI design because it can cause **functional failur
 
   ---
 
-## ⚡️ Causes of Synthesis–Simulation (S-S) Mismatch 🧩💥
+### ⚡️ Causes of Synthesis–Simulation (S-S) Mismatch 🧩💥
 
 Synthesis–Simulation mismatches often occur due to subtle coding issues in RTL. Understanding the causes helps **avoid functional surprises**! 🚨
 
@@ -243,7 +243,7 @@ Tips for Avoiding S-S Mismatch
 
 ---
 
-## 🔧 Quick Checklist for Designers ✅🛠️
+### 🔧 Quick Checklist for Designers ✅🛠️
 
 - [ ] No `#delay` or `initial` blocks in synthesizable code ⛔️  
 - [ ] Every `if` has an `else` 📝  
@@ -254,12 +254,12 @@ Tips for Avoiding S-S Mismatch
 ---
 
 
-# 🌟 Bad MUX Example (Common Pitfalls) 🧩💥
+## 🌟 Bad MUX Example (Common Pitfalls) 🧩💥
 
 Sometimes, **small RTL mistakes** lead to **synthesis–simulation mismatches**.  
 Here’s an example **2:1 MUX** with intentional issues to demonstrate common pitfalls. 🚨
 
-## 🔹 Problematic Code
+### 🔹 Problematic Code
 
 ```verilog
 module bad_mux (
@@ -285,7 +285,7 @@ endmodule
 
 </details>
 
-## ✅ Corrected Version of MUX 🔧
+### ✅ Corrected Version of MUX 🔧
 
 ```verilog
 always @ (*) begin
@@ -295,7 +295,7 @@ always @ (*) begin
     y = i0;
 end
 ```
-## Waveform of RTL Code Simulation of Bad Mux :
+### Waveform of RTL Code Simulation of Bad Mux :
 
 - This shows the **behavior of the original RTL MUX**.  
 - Output `y` is computed based on **ideal combinational logic**.  
@@ -310,7 +310,7 @@ end
 
 ---
 
-## Netlist Code Generated for Bad Mux :
+### Netlist Code Generated for Bad Mux :
 
 - This waveform shows **post-synthesis behavior** of the Bad MUX.  
 - Realistic **gate delays** from synthesis tools are included (SDF annotated). ⏱️  
@@ -328,7 +328,7 @@ end
 
 ---
 
-## Netlist Simulation of Bad Mux :
+### Netlist Simulation of Bad Mux :
 
 Perform GLS on the `bad_mux`.  
 Expect simulation mismatches or warnings due to above issues.
@@ -341,13 +341,13 @@ Expect simulation mismatches or warnings due to above issues.
 
 ---
 
-# ⚡️ Blocking vs. Non-Blocking Assignments in Verilog 🛠️🔄
+## ⚡️ Blocking vs. Non-Blocking Assignments in Verilog 🛠️🔄
 
 Verilog offers **two types of procedural assignments** that behave differently depending on **combinational vs sequential logic**. ⚡️
 
 ---
 
-## 3.1 Blocking Statements (`=`) 📝
+### 3.1 Blocking Statements (`=`) 📝
 
 - **Syntax:** `=`  
 - **Execution:** Sequential, executes **immediately** ⏩  
@@ -360,7 +360,7 @@ always @(*)
   y = a & b;
 ```
 
-## 3.2 Non-Blocking Statements (`<=`) ⏱️
+### 3.2 Non-Blocking Statements (`<=`) ⏱️
 
 - **Syntax:** `<=`  
 - **Execution:** Scheduled, executes **concurrently** at the end of the time step 🔄  
@@ -375,7 +375,7 @@ always @(posedge clk)
 
 ---
 
-## 3.3 Comparison Table 🆚⚡️
+### 3.3 Comparison Table 🆚⚡️
 
 | **Blocking (`=`)** 📝                        | **Non-Blocking (`<=`)** ⏱️                 |
 |---------------------------------------------|--------------------------------------------|
@@ -390,11 +390,11 @@ always @(posedge clk)
 ---
 
 
-# 🛠️ Lab : Blocking Assignment Caveat 🛠️
+## 🛠️ Lab : Blocking Assignment Caveat 🛠️
 
 Sometimes, **blocking assignments (`=`)** can produce unexpected results if the **order of assignments** is not carefully handled. 🧩  
 
-## 🔹 Problematic Code
+### 🔹 Problematic Code
 ```verilog
 module blocking_caveat (
   input a, 
@@ -410,12 +410,12 @@ module blocking_caveat (
 endmodule
 ```
 
-## What’s wrong ❓
+### What’s wrong ❓
 
 - The order of assignments causes `d` to use the old value of `x`—not the newly computed value.
 - **Best Practice:** Assign intermediate variables before using them.
 
-## **Corrected order:**
+### **Corrected order:**
 
 ```verilog
 always @ (*) begin
@@ -428,7 +428,7 @@ end
 
 ---
 
-## Synthesis of the Blocking Caveat Module
+### Synthesis of the Blocking Caveat Module
 
 Synthesize the corrected version of the module and observe the results.
 
@@ -436,7 +436,7 @@ Synthesize the corrected version of the module and observe the results.
 
 ---
 
-## GLS Synthesis on the Netlist of Blocking Caveat Module
+### GLS Synthesis on the Netlist of Blocking Caveat Module
 
 ```shell
 iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v blocking_caveat_net.v tb_blocking_caveat.v
@@ -447,7 +447,7 @@ iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v blocking_caveat_net.v 
 ---
 
 
-# 📌 Day 4 Summary: Gate-Level Simulation & Verilog Assignments 🛠️🧩
+## 📌 Day 4 Summary: Gate-Level Simulation & Verilog Assignments 🛠️🧩
 
 Here’s a **quick recap** of what we learned today:  
 
@@ -480,7 +480,7 @@ Here’s a **quick recap** of what we learned today:
 
 ---
 
-# 🏁 Conclusion
+## 🏁 Conclusion
 
 Today’s session focused on **Gate-Level Simulation, RTL coding practices, and synthesis verification**.  
 
@@ -493,7 +493,7 @@ Today’s session focused on **Gate-Level Simulation, RTL coding practices, and 
 
 ---
 
-# 📚 References
+## 📚 References
 
 1. **M. Mano, "Digital Design," 6th Edition, Pearson.**  
 2. **R. Brown, "FPGA Prototyping By Verilog Examples," 1st Edition, Wiley.**  
