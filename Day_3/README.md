@@ -50,20 +50,20 @@ Today’s session will be filled with **optimization techniques, sequential logi
  💪 Let’s begin our journey 👉 **towards smarter digital design!**  
 
 
-# 1️⃣ Constant Propagation 🚦
+## 1️⃣ Constant Propagation 🚦
 
  Constant propagation is an important **optimization technique** in VLSI design and digital synthesis.
  It replaces variables or signals that hold **constant values** with their literal constants during logic synthesis. 
  By doing this, the design tools can simplify the logic, reduce hardware complexity, and improve performance. 
 
 --- 
-## 🔎 How It Works 
+### 🔎 How It Works 
 1. The synthesis tool **analyzes the HDL code** (Verilog/VHDL/SystemVerilog).
 2. If a signal or variable is **statically assigned a constant**, the tool propagates this constant throughout the circuit.
 3. Any gates, flip-flops, or expressions that depend only on this constant are simplified or even **eliminated**.
 4. This process reduces unnecessary computations and makes the final synthesized circuit more efficient.
 --- 
-## ⚡ Benefits of Constant Propagation 
+### ⚡ Benefits of Constant Propagation 
 
 **Reduced Complexity**: Unnecessary gates are removed, making the circuit smaller. 
 - **Performance Improvement**: Critical paths can become shorter, reducing delays.
@@ -72,7 +72,7 @@ Today’s session will be filled with **optimization techniques, sequential logi
 ---
 
 
-## 🟢 Constant Propagation in Combinational Logic In purely **combinational circuits**, constant propagation often leads to **gate elimination**.
+### 🟢 Constant Propagation in Combinational Logic In purely **combinational circuits**, constant propagation often leads to **gate elimination**.
 
 ### Example:
 ```verilog
@@ -86,11 +86,11 @@ assign z = b | 1'b1;  // ORing with 1
 z will always be 1. The OR gate is removed, and z is tied to constant logic 1. Result: Entire gates or paths are deleted, saving area and improving timing. 
 
 
-# Example of demonstrating Constant Propogation : 
+## Example of demonstrating Constant Propogation : 
 
 <img src="Images/JsUFyyD.jpg" alt="Constant Propagation Diagram" width="70%"/>
 
-## 🔵 Constant Propagation in Sequential Logic
+### 🔵 Constant Propagation in Sequential Logic
 
 In sequential circuits, constant propagation can simplify state machines or flip-flop behavior when certain inputs or control signals are fixed.
 
@@ -107,7 +107,7 @@ end
 * Since the condition is always false, the first branch never executes.
 * The synthesis tool recognizes this and optimizes q to simply hold its value, possibly removing redundant hardware.
   
-Disabled Counter :
+### Disabled Counter :
 
 ```verilog
   reg enable = 1'b0;
@@ -120,7 +120,7 @@ Disabled Counter :
 * The entire counter logic can be eliminated.
 
 
-Constant Input to State Machine :
+### Constant Input to State Machine :
 
 ```verilog
 always @(posedge clk) begin
@@ -136,7 +136,7 @@ end
 * The synthesis tool optimizes the state machine by removing unreachable states, reducing area and power.
 
   
-  # Benefits in Sequential Logic
+### Benefits in Sequential Logic
   1.Reduces area: Unused flip-flops and registers are removed.
   2.Reduces power consumption: Fewer gates switching.
   3.Improves timing: Shorter critical paths by removing unnecessary logic.
@@ -149,11 +149,11 @@ Constant propagation in sequential logic focuses on simplifying conditional oper
 
 ---
 
-# 2️⃣ State Optimization 🧩 
+## 2️⃣ State Optimization 🧩 
 
 State optimization is an important technique in **finite state machine (FSM) design** for VLSI circuits. The goal is to make the FSM **smaller, faster, and more power-efficient** by reducing unnecessary states, optimizing state representation, and minimizing logic. --- 
 
-## 🔎 How State Optimization Works 
+### 🔎 How State Optimization Works 
    1. **State Reduction** - Merge **equivalent states** that produce the same outputs for all inputs. - Reduces the total number of states in the FSM, saving flip-flops and combinational logic.
    2. **State Encoding** - Assign **optimal binary codes** to each state to minimize combinational logic complexity. - Common encoding schemes: - Binary Encoding - One-Hot Encoding - Gray Encoding
    3. **Logic Minimization** - Apply **Boolean algebra simplifications** or use synthesis tools to generate **compact logic equations** for next-state and output logic. - Reduces the number of gates required.
@@ -172,11 +172,11 @@ Reduced States: S0, S1, S2, S3
 
 ---
 
-# 3️⃣ Cloning 🏗️ 
+## 3️⃣ Cloning 🏗️ 
 
  Cloning is a **circuit optimization technique** in VLSI design where a logic cell or module is **duplicated** to improve performance, reduce power, or optimize timing. It is commonly used to **balance load**, **reduce     wire length**, and **improve signal propagation** along critical paths. 
  
- ## 🔎 How Cloning Works 
+ ### 🔎 How Cloning Works 
  1. **Identify Critical Paths** - Use **timing analysis tools** to find slow or heavily loaded paths in the design. -     Critical paths are the targets for optimization. 
  2. **Duplicate the Target Cell/Module** - Create an **identical copy** of the logic cell or module that contributes to the critical path delay.
  3. **Redistribute    Connections** - Split the fan-out of the original cell between the original and the cloned cell. - This balances the load on each output, reducing delay.
@@ -186,7 +186,7 @@ Reduced States: S0, S1, S2, S3
 ---
 
  
- ## 🟢 Cloning Example Suppose a combinational block AND1 drives 6 heavy load gates, causing a timing bottleneck:
+ ### 🟢 Cloning Example Suppose a combinational block AND1 drives 6 heavy load gates, causing a timing bottleneck:
  
 ```text
 Original:
@@ -201,13 +201,13 @@ AND1_clone ---> GateD, GateE, GateF
 
 ---
 
-# 4️⃣ Retiming ⏱️
+## 4️⃣ Retiming ⏱️
 
 
 Retiming is a **circuit optimization technique** used in VLSI design to improve **performance, timing, and sometimes power efficiency** by repositioning **registers (flip-flops)** in a sequential circuit without altering its functionality.
 
 
-## 🔎 How Retiming Works 
+### 🔎 How Retiming Works 
 1. **Graph Representation** - Model the sequential circuit as a **directed graph** where nodes represent combinational logic and edges represent registers (flip-flops).
 2. **Register Repositioning** - Move registers across combinational logic blocks to **balance path delays**. - The goal is to **shorten the longest path** (critical path) and allow faster clock operation.
 3. **Constraints Analysis** - Ensure that repositioning maintains **functional correctness** of the circuit. - Consider **setup, hold, and timing constraints** to prevent timing violations.
@@ -215,7 +215,7 @@ Retiming is a **circuit optimization technique** used in VLSI design to improve 
    
 ---
    
-## 🟢 Example Suppose a sequential circuit has a long critical path between two flip-flops:
+### 🟢 Example Suppose a sequential circuit has a long critical path between two flip-flops:
 
 ```text
 FF1 ---> Logic Block A ---> Logic Block B ---> FF2
@@ -230,10 +230,10 @@ FF1 ---> Logic Block A ---> FF1_new ---> Logic Block B ---> FF2
 
 ---
 
-# 5️⃣ Labs on Optimization Techniques 🧪 
+## 5️⃣ Labs on Optimization Techniques 🧪 
 
 
-## Lab 1
+### Lab 1
 
 Below is the Verilog code for Lab 1:
 
@@ -257,7 +257,7 @@ opt_clean -purge
 ![Lab 1 Output](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/opt_check.png) 
 ---
 
-## Lab 2 Verilog code:
+### Lab 2 Verilog code:
 
 
 ```verilog
@@ -275,7 +275,7 @@ endmodule
 
 ---
 
-## Lab 3 Verilog code:
+### Lab 3 Verilog code:
 
 ```verilog
 module opt_check2 (input a , input b , output y);
@@ -290,7 +290,7 @@ y = a ? 1 : b (outputs 1 when a is true, otherwise b).
 
 --- 
 
-## Lab 4 Verilog code:
+### Lab 4 Verilog code:
 
 ```verilog
 module opt_check4 (input a , input b , input c , output y);
@@ -310,7 +310,7 @@ module opt_check4 (input a , input b , input c , output y);
  
  ---
  
- ## Verilog Source Code vs Synthesized Netlist
+ ### Verilog Source Code vs Synthesized Netlist
  
  In VLSI design, understanding the difference between **Verilog source code** and the **synthesized netlist** is crucial. 
  - **Verilog Source Code**: High-level, human-readable description of the design using modules, wires, and assignment statements.
@@ -318,7 +318,7 @@ module opt_check4 (input a , input b , input c , output y);
  The detailed, gate-level representation generated after synthesis, ready for layout and backend verification.
  ---
  
-## 🔹 Source Code (Verilog) 
+### 🔹 Source Code (Verilog) 
 
 - Describes the design **at a high level**.
 - Uses modules, wires, and assignment statements to define the desired behavior and structure.
@@ -373,7 +373,7 @@ endmodule
 ```
 
 
-## 🔹 Netlist (Synthesized Output) 
+### 🔹 Netlist (Synthesized Output) 
 - Generated after synthesis to map the design to **specific logic gates or standard cells** in the target technology.
 - Breaks down modules into interconnected gates/cells such as AND, OR, NOT, and other complex library elements.
 - All wiring and connectivity are explicitly defined.
@@ -389,7 +389,7 @@ endmodule
 
 ---
 
-## 🔹 Key Differences
+### 🔹 Key Differences
 
 | Aspect       | Verilog Source Code                       | Synthesized Netlist                                  |
 |-------------|------------------------------------------|-----------------------------------------------------|
@@ -460,13 +460,13 @@ endmodule
 
 --- 
 
-# Similar Examples of Sequential Circuits Optimization with Verilog code and Netlist : 
+## Similar Examples of Sequential Circuits Optimization with Verilog code and Netlist : 
 
 **Verilog Codes of Three different modules :** 
 
 ![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/const345.png) 
 
-# Individual Waveforms : 
+### Individual Waveforms : 
 
 Const 3 : 
 
@@ -482,7 +482,7 @@ const 5 :
 
 --- 
 
-# Individual Netlist : 
+### Individual Netlist : 
 
 Const 3 : 
 
@@ -498,13 +498,13 @@ const 5 :
 
 --- 
 
-# 6️⃣ Handling Unused Outputs 🗑️ 
+## 6️⃣ Handling Unused Outputs 🗑️ 
 
 In digital circuit design, sometimes certain outputs of a module or combinational block are **not used** in the higher-level design. Optimizing these unused outputs can **reduce circuit area, power, and complexity**.
 
 ---
 
-## 🔹 Concept 
+### 🔹 Concept 
 - When an output is **not connected** or **unused**, synthesis tools can often **ignore or remove** the logic driving that output.
 - This leads to a **simplified netlist**, as gates or combinational paths that only contribute to unused outputs are **eliminated**.
 - Retaining unused logic unnecessarily increases **area, power, and timing complexity**.
@@ -513,7 +513,7 @@ In digital circuit design, sometimes certain outputs of a module or combinationa
  
 When designing digital circuits in Verilog, unused outputs (or signals that are not connected, read, or used at higher levels) are typically neglected during synthesis—so the netlist omits related gates and connections to optimize the hardware. 
 
-## Verilog Code Example with Unused Outputs
+### Verilog Code Example with Unused Outputs
 
 ```verilog
 module sample_unused_output(
@@ -553,16 +553,16 @@ endmodule
 In the top module, unused_out from the submodule is **not connected** to anything and not used in further logic. The synthesis tool **removes any hardware** solely responsible for driving unused_out, unless forcedotherwise (some tools can drive it to zero). 
  
 --- 
-## 🔹 Netlist Behavior with Unused Outputs 
+### 🔹 Netlist Behavior with Unused Outputs 
  - During **netlist generation**, logic driving unused outputs is detected and typically **eliminated**, reducing gate count and optimizing area and power.
  - Only connections that influence **used outputs** (used_out) are maintained.
  - Logic for unused_out is **omitted** unless specifically constrained or forced to remain.
  - Warnings may be issued about unused outputs, but **physical resources are saved**.
 
 
-# Example of Demonstrating Unused Outputs
+## Example of Demonstrating Unused Outputs
 
-# Verilog Code : 
+### Verilog Code : 
 
  ![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_code.png)
 
@@ -570,11 +570,11 @@ Code 2 :
 
  ![code](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2code.png) 
 
-# Waveform : 
+### Waveform : 
 
  ![waveform](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter_wave.png)
 
-# Netlist : 
+### Netlist : 
 
  ![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_3/Images/counter2.png)
 
@@ -590,7 +590,7 @@ Code 2 :
 
 ---
 
-# 7️⃣ Summary & Key Learnings 📊
+## 7️⃣ Summary & Key Learnings 📊
 
 - **Focus:** Optimization techniques for combinational and sequential circuits in digital design, with practical Verilog labs.  
 - **Topics Covered:**  
