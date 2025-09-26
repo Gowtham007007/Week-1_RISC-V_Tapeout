@@ -22,7 +22,6 @@
 
 ## 📚 Table of Contents – Day 5
 
-## 📚 Table of Contents – Day 5
 
 | Section | Topics | Link |
 |---------|--------|------|
