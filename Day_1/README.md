@@ -1,13 +1,13 @@
 <div align="center">
 
-![Verilog RTL](https://img.shields.io/badge/Verilog-RTL-blue?style=for-the-badge&logo=verilog&logoColor=white)
+# 🌟🚀 **Day 1: Introduction to Verilog RTL Design & Synthesis** 🛠️💡
+
+![Verilog RTL](https://img.shields.io/badge/Verilog-RTL-purple?style=for-the-badge&logo=verilog&logoColor=white)
 ![Yosys Synthesis](https://img.shields.io/badge/Yosys-Synthesis-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white)
-![Icarus Verilog](https://img.shields.io/badge/Icarus-Verilog-orange?style=for-the-badge&logo=gnu&logoColor=white)
-![GTKWave Simulation](https://img.shields.io/badge/GTKWave-Simulation-lightgrey?style=for-the-badge&logo=gnu&logoColor=black)
+![Icarus Verilog](https://img.shields.io/badge/Icarus-Verilog-red?style=for-the-badge&logo=gnu&logoColor=white)
+![GTKWave Simulation](https://img.shields.io/badge/GTKWave-Simulation-pink?style=for-the-badge&logo=gnu&logoColor=black)
 
 </div>
-
-# 🌟🚀 **Day 1: Introduction to Verilog RTL Design & Synthesis** 🛠️💡
 
 
 > 🎉 Welcome to **Day 1** of the RTL Workshop!  
@@ -19,18 +19,17 @@
 > 💡 This guide includes **practical labs, essential concepts, and step-by-step explanations** to help you build a strong foundation in RTL design.
 
 ---
+| Section | Topics | Link |
+|---------|--------|------|
+| 1️⃣  **Simulator & Testbench Essentials** | - Simulator Overview <br> - Design Explanation <br> - Testbench Setup | 🔗 [Simulator & Testbench]() |
+| 2️⃣  **Getting Started with Icarus Verilog** 💻| - Simulation Flow <br> - Generating Waveform Files (.vcd) | 🔗 [Icarus Verilog Setup]() |
+| 3️⃣  **Lab: 2-to-1 Multiplexer Simulation** 🧪|- Clone Repository <br> - Install Tools <br> - Compile & Run <br> - Waveform Visualization | 🔗 [Mux Simulation Lab]() |
+| 4️⃣  **Multiplexer Verilog Code Analysis** 🔍|- Module Code <br> - Logic Explanation | 🔗 [Code Analysis]() |
+| 5️⃣  **Introduction to Yosys & Gate Libraries** ⚡|- What is Yosys? <br> - Features of Yosys <br> - Understanding Gate Library Flavors | 🔗 [Yosys & Libraries]() |
+| 6️⃣  **Synthesis Lab with Yosys** 🏗️ |- Step-by-Step Synthesis Flow <br> - Visualizing Gate-Level Netlist <br> - Exporting Netlist | 🔗 [Yosys Synthesis Lab]() |
+| 7️⃣  **Workshop Summary & Key Takeaways** 📝 |Quick Recap | 🔗 [Summary]() |
 
-## 🗂 Table of Contents
 
-| Section | Topic |
-|---------|-------|
-| 1️⃣ | [What is a Simulator, Design, and Testbench?](#1-what-is-a-simulator-design-and-testbench) |
-| 2️⃣ | [Getting Started with iverilog](#2-getting-started-with-iverilog) |
-| 3️⃣ | [Lab: Simulating a 2-to-1 Multiplexer](#3-lab-simulating-a-2-to-1-multiplexer) |
-| 4️⃣ | [Verilog Code Analysis](#4-verilog-code-analysis) |
-| 5️⃣ | [Introduction to Yosys & Gate Libraries](#5-introduction-to-yosys--gate-libraries) |
-| 6️⃣ | [Synthesis Lab with Yosys](#6-synthesis-lab-with-yosys) |
-| 7️⃣ | [Summary](#7-summary) |
 
 ---
 
@@ -45,7 +44,7 @@
 
 
 
-## 1. What is a Simulator, Design, and Testbench?
+# 1️⃣  **Simulator & Testbench Essentials**
 
 ###  Simulator
 
@@ -65,7 +64,7 @@ A **testbench** is a simulation environment that applies various inputs to your 
 
 ---
 
-## 2. Getting Started with iverilog
+# 2️⃣  **Getting Started with Icarus Verilog** 💻
 
 **iverilog** is an open-source simulator for Verilog. Here’s the typical simulation flow:
 
@@ -78,7 +77,7 @@ A **testbench** is a simulation environment that applies various inputs to your 
 
 ---
 
-## 3. Lab: Simulating a 2-to-1 Multiplexer
+# 3️⃣  **Lab: 2-to-1 Multiplexer Simulation** 🧪
 
 Let’s simulate a simple **2-to-1 multiplexer** using iverilog!
 
@@ -122,7 +121,7 @@ gtkwave tb_good_mux.vcd
 
 ---
 
-## 4. Verilog Code Analysis
+# 4️⃣  **Multiplexer Verilog Code Analysis** 🔍
 
 **The code for the multiplexer (`good_mux.v`):**
 
@@ -146,7 +145,7 @@ endmodule
 
 ---
 
-## 5. Introduction to Yosys & Gate Libraries
+# 5️⃣  **Introduction to Yosys & Gate Libraries** ⚡
 
 ###  What is Yosys?
 
@@ -173,7 +172,7 @@ A `.lib` file contains many versions of each gate (like AND, OR, NOT) with diffe
 
 ---
 
-## 6. Synthesis Lab with Yosys
+# 6️⃣  **Synthesis Lab with Yosys** 🏗️ 
 
 Let’s synthesize the `good_mux` design using Yosys!
 
@@ -224,7 +223,7 @@ write_verilog -noattr good_mux_netlist.v
 
 ---
 
-## 7. Summary
+# 7️⃣  **Workshop Summary & Key Takeaways** 📝
 
 - You learned about simulators, designs, and testbenches.
 - You ran your first Verilog simulation with iverilog and visualized waveforms.
