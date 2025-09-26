@@ -81,9 +81,9 @@ The workshop is organized by day, each with its own folder and README:
 
 - [x] Day 1 - Verilog RTL Design ✅  
 - [x] Day 2 - Timing Libraries & Flip-Flops ✅  
-- [ ] Day 3 - Combinational & Sequential Optimization ⏳  
-- [ ] Day 4 - GLS & Synthesis-Simulation Mismatch ❌  
-- [ ] Day 5 - Final Optimization 🏁
+- [x] Day 3 - Combinational & Sequential Optimization ⏳  
+- [x] Day 4 - GLS & Synthesis-Simulation Mismatch ❌  
+- [x] Day 5 - Final Optimization 🏁
 
 ---
 
