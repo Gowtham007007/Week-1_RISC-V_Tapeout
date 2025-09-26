@@ -40,7 +40,7 @@ We’ll explore:
 
 | Section | Topics | Link |
 |---------|--------|------|
-| 1️⃣ Gate-Level Simulation (GLS) ⚡️ | ❓ What is GLS? <br> 💡 Why Perform GLS? <br> 🕐 When is GLS Performed? <br> 🧭 Types of GLS <br> ⏳ Delay Annotation | [Click Here](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_4#%EF%B8%8F-gate-level-simulation) |
+| 1️⃣ Gate-Level Simulation (GLS) ⚡️ | ❓ What is GLS? <br> 💡 Why Perform GLS? <br> 🕐 When is GLS Performed? <br> 🧭 Types of GLS <br> ⏳ Delay Annotation | [🚀 Dive In](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_4#%EF%B8%8F-gate-level-simulation) |
 | 2️⃣ Lab Experiment 🧪 | 🔹 Ternary Operator MUX <br> 📜 Verilog Code <br> 🖥️ Waveform of RTL Code Simulation <br> 📝 Netlist of RTL Code <br> 💻 Netlist Code <br> ⏱️ Waveform of Netlist Simulation | [Click Here](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_4#-lab-experiment) |
 | 3️⃣ Synthesis vs Simulation Mismatch 🔀 | 🔍 Common Causes of Mismatch <br> 💡 Key Points to Avoid Mismatch <br> ⚡️ Causes of S-S Mismatch <br> 🔧 Quick Checklist for Designers | [Click Here](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_4#%EF%B8%8F-synthesis-vs-simulation-mismatch) |
 | 4️⃣ Bad MUX Example 🧩💥 | ❌ Problematic Code <br> ✅ Corrected Version <br> 🖥️ Waveform of RTL Simulation <br> 💻 Netlist Code <br> ⏱️ Netlist Simulation | [Click Here](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_4#-bad-mux-example-common-pitfalls-) |
