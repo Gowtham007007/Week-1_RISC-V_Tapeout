@@ -1,6 +1,3 @@
-
-
-
 <div align="center">
 
   # 🎉✨ **Welcome to Day 4: GLS & Verilog Adventures** ✨🎉 
@@ -16,7 +13,6 @@
 
 
 
----
 
 ## 🔹 What’s in this Workshop?
 
@@ -39,33 +35,26 @@ We’ll explore:
 
 ---
 
-## 📌 How to Use This Repository
-
-1. Browse the **Table of Contents** to navigate topics easily 📖.  
-2. Open the **Labs** folder for hands-on exercises 🧪.  
-3. Follow the **waveform and netlist examples** to understand GLS & S-S mismatches 📊.  
-4. Explore **corrected code** and **best practices** for RTL coding 💡.  
-
----
-
-
 
 # 🗂️ Day 4: Table of Contents 🛠️💡
 
-| Section | Topics |
-|---------|--------|
-| 1️⃣ Gate-Level Simulation (GLS) ⚡️ | ❓ What is GLS? <br> 💡 Why Perform GLS? <br> 🕐 When is GLS Performed? <br> 🧭 Types of GLS <br> ⏳ Delay Annotation |
-| 2️⃣ Lab Experiment 🧪 | 🔹 Ternary Operator MUX <br> 📜 Verilog Code <br> 🖥️ Waveform of RTL Code Simulation <br> 📝 Netlist of RTL Code <br> 💻 Netlist Code <br> ⏱️ Waveform of Netlist Simulation |
-| 3️⃣ Synthesis vs Simulation Mismatch 🔀 | 🔍 Common Causes of Mismatch <br> 💡 Key Points to Avoid Mismatch <br> ⚡️ Causes of S-S Mismatch <br> 🔧 Quick Checklist for Designers |
-| 4️⃣ Bad MUX Example 🧩💥 | ❌ Problematic Code <br> ✅ Corrected Version <br> 🖥️ Waveform of RTL Simulation <br> 💻 Netlist Code <br> ⏱️ Netlist Simulation |
-| 5️⃣ Blocking vs Non-Blocking Assignments 🛠️🔄 | 📝 Blocking Statements (`=`) <br> ⏱️ Non-Blocking Statements (`<=`) <br> 🆚 Comparison Table |
-| 6️⃣ Lab: Blocking Assignment Caveat 🛠️ | ❌ Problematic Code <br> ✅ Corrected Order <br> 💻 Synthesis of Module <br> ⏱️ GLS Synthesis on Netlist |
-| 7️⃣ Day 4 Summary 🧩💡 | Quick Recap of GLS, S-S Mismatch, Assignments & Labs |
-| 8️⃣ Conclusion 🏁 | Key Takeaways & Learnings |
-| 9️⃣ References 📚 | Books, Tutorials & Docs Used |
+| Section | Topics | Link |
+|---------|--------|------|
+| 1️⃣ Gate-Level Simulation (GLS) ⚡️ | ❓ What is GLS? <br> 💡 Why Perform GLS? <br> 🕐 When is GLS Performed? <br> 🧭 Types of GLS <br> ⏳ Delay Annotation | [Click Here](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_4#%EF%B8%8F-gate-level-simulation) |
+| 2️⃣ Lab Experiment 🧪 | 🔹 Ternary Operator MUX <br> 📜 Verilog Code <br> 🖥️ Waveform of RTL Code Simulation <br> 📝 Netlist of RTL Code <br> 💻 Netlist Code <br> ⏱️ Waveform of Netlist Simulation | [Click Here]() |
+| 3️⃣ Synthesis vs Simulation Mismatch 🔀 | 🔍 Common Causes of Mismatch <br> 💡 Key Points to Avoid Mismatch <br> ⚡️ Causes of S-S Mismatch <br> 🔧 Quick Checklist for Designers | [Click Here]() |
+| 4️⃣ Bad MUX Example 🧩💥 | ❌ Problematic Code <br> ✅ Corrected Version <br> 🖥️ Waveform of RTL Simulation <br> 💻 Netlist Code <br> ⏱️ Netlist Simulation | [Click Here]() |
+| 5️⃣ Blocking vs Non-Blocking Assignments 🛠️🔄 | 📝 Blocking Statements (`=`) <br> ⏱️ Non-Blocking Statements (`<=`) <br> 🆚 Comparison Table | [Click Here]() |
+| 6️⃣ Lab: Blocking Assignment Caveat 🛠️ | ❌ Problematic Code <br> ✅ Corrected Order <br> 💻 Synthesis of Module <br> ⏱️ GLS Synthesis on Netlist | [Click Here]() |
+| 7️⃣ Day 4 Summary 🧩💡 | Quick Recap of GLS, S-S Mismatch, Assignments & Labs | [Click Here]() |
+| 8️⃣ Conclusion 🏁 | Key Takeaways & Learnings | [Click Here]() |
+| 9️⃣ References 📚 | Books, Tutorials & Docs Used | [Click Here]() |
+
 ---
+
 ### ***🚀 Let's Dive In! 🌟***
 ---
+
 
 #  ⚡️ Gate Level Simulation
 
@@ -74,7 +63,7 @@ It ensures that what you designed at RTL truly works at the gate level, **with r
 
 ---
 
-## ❓ What is GLS?
+## ❓ What is GLS ?
 GLS is the process of simulating a **post-synthesis netlist** (a circuit represented as logic gates) instead of high-level RTL.  
 It helps to validate the following aspects:
 
@@ -107,6 +96,7 @@ GLS is usually done at **two critical points**:
 ---
 
 ## 🧭 Types of GLS
+
 | Type             | Description                                                                 |
 |------------------|-----------------------------------------------------------------------------|
 | **Functional GLS** | 🔹 Logic-only simulation (zero or unit delays). Fast but ignores real timing. |
@@ -115,6 +105,7 @@ GLS is usually done at **two critical points**:
 ---
 
 ## ⏳ Delay Annotation
+
 GLS often uses **SDF Back-Annotation** to model **real delays** from synthesis or P&R:
 - **Without annotation** → Ideal behavior, unrealistic.  
 - **With SDF annotation** → Realistic timing behavior (net delays, cell delays, setup/hold).  
@@ -132,6 +123,7 @@ In this lab, we design a **2:1 Multiplexer** using the **ternary operator** in V
 The multiplexer selects one of two inputs (`i0`, `i1`) based on the control signal (`sel`) and drives it to the output (`y`).  
 
 ### 📜 Verilog Code
+
 ```verilog
 // 2:1 MUX using Ternary Operator
 module ternary_operator_mux (
@@ -144,14 +136,15 @@ module ternary_operator_mux (
 endmodule
 ```
 ---
-## Waveform of RTL Code Simulation :
+### Waveform of RTL Code Simulation :
 
 ![Ternary Operator Waveform ](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/ternary_wave.png)
 
 ---
 
 ## Netlist of RTL Code :
-## Synthesis Using Yosys
+
+### Synthesis Using Yosys
 
 Synthesize the above MUX using Yosys.  
 _Follow the standard Yosys synthesis flow._
@@ -160,7 +153,8 @@ _Follow the standard Yosys synthesis flow._
 
 ---
 
-## Netlist Code:
+### Netlist Code:
+
 ```shell
   write_verilog -noattr ternary_operator_mux_net.v
 ```
@@ -171,7 +165,8 @@ _Follow the standard Yosys synthesis flow._
 
 
 ## Waveform of Netlist Simulation :
-## Gate-Level Simulation (GLS) of MUX
+
+### Gate-Level Simulation (GLS) of MUX
 
 Run GLS for the synthesized MUX.  
 Use this command (adjust paths as needed):
@@ -194,7 +189,7 @@ This is a critical issue in VLSI design because it can cause **functional failur
 
 ---
 
-### 🔍 Common Causes of Mismatch 🕵️‍♂️
+## 🔍 Common Causes of Mismatch 🕵️‍♂️
 
 | Cause                           | Description                                                                 |
 |---------------------------------|-----------------------------------------------------------------------------|
@@ -205,7 +200,7 @@ This is a critical issue in VLSI design because it can cause **functional failur
 
 
 
-### 💡 Key Points to Avoid Mismatch 🌟✨
+## 💡 Key Points to Avoid Mismatch 🌟✨
 
 - ✅ **Always write synthesizable RTL** – avoid unsupported constructs. 📝  
 - ✅ **Use complete and unambiguous coding** – cover all branches, define all signals. ✅🔧  
@@ -247,7 +242,7 @@ Tips for Avoiding S-S Mismatch
 
 ---
 
-### 🔧 Quick Checklist for Designers ✅🛠️
+## 🔧 Quick Checklist for Designers ✅🛠️
 
 - [ ] No `#delay` or `initial` blocks in synthesizable code ⛔️  
 - [ ] Every `if` has an `else` 📝  
@@ -263,7 +258,7 @@ Tips for Avoiding S-S Mismatch
 Sometimes, **small RTL mistakes** lead to **synthesis–simulation mismatches**.  
 Here’s an example **2:1 MUX** with intentional issues to demonstrate common pitfalls. 🚨
 
-### 🔹 Problematic Code
+## 🔹 Problematic Code
 
 ```verilog
 module bad_mux (
@@ -289,7 +284,7 @@ endmodule
 
 </details>
 
-### ✅ Corrected Version of MUX 🔧
+## ✅ Corrected Version of MUX 🔧
 
 ```verilog
 always @ (*) begin
@@ -313,6 +308,7 @@ end
 ![bad_mux](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/bad_mux_wave.png)
 
 ---
+
 ## Netlist Code Generated for Bad Mux :
 
 - This waveform shows **post-synthesis behavior** of the Bad MUX.  
@@ -321,7 +317,8 @@ end
   - Missing sensitivity list 🕵️‍♂️  
   - Wrong blocking vs non-blocking assignment 🔄  
 
-**Observations:**  
+### **Observations:**  
+
 - Timing differences may appear in waveform. ⚠️  
 - Some outputs may lag or be incorrect in edge cases.  
 - Highlights **why synthesis-simulation mismatch occurs**.
@@ -329,6 +326,7 @@ end
 ![bad_mux](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_4/Images/bad_mux_net_code.png)
 
 ---
+
 ## Netlist Simulation of Bad Mux :
 
 Perform GLS on the `bad_mux`.  
@@ -352,8 +350,10 @@ Verilog offers **two types of procedural assignments** that behave differently d
 
 - **Syntax:** `=`  
 - **Execution:** Sequential, executes **immediately** ⏩  
-- **Suitable for:** **Combinational logic** (`always @(*)`) 🔹  
-- **Example:**  
+- **Suitable for:** **Combinational logic** (`always @(*)`)
+  
+### 🔹**Example:**  
+
 ```verilog
 always @(*) 
   y = a & b;
@@ -363,8 +363,10 @@ always @(*)
 
 - **Syntax:** `<=`  
 - **Execution:** Scheduled, executes **concurrently** at the end of the time step 🔄  
-- **Suitable for:** **Sequential logic** (`always @(posedge clk)`) 🛠️  
-- **Example:**  
+- **Suitable for:** **Sequential logic** (`always @(posedge clk)`) 🛠️
+  
+### 🔹**Example:**  
+
 ```verilog
 always @(posedge clk) 
   q <= d;
@@ -372,7 +374,7 @@ always @(posedge clk)
 
 ---
 
-### 3.3 Comparison Table 🆚⚡️
+## 3.3 Comparison Table 🆚⚡️
 
 | **Blocking (`=`)** 📝                        | **Non-Blocking (`<=`)** ⏱️                 |
 |---------------------------------------------|--------------------------------------------|
@@ -391,7 +393,7 @@ always @(posedge clk)
 
 Sometimes, **blocking assignments (`=`)** can produce unexpected results if the **order of assignments** is not carefully handled. 🧩  
 
-### 🔹 Problematic Code
+## 🔹 Problematic Code
 ```verilog
 module blocking_caveat (
   input a, 
@@ -407,11 +409,13 @@ module blocking_caveat (
 endmodule
 ```
 
-## What’s wrong?
+## What’s wrong ❓
+
 - The order of assignments causes `d` to use the old value of `x`—not the newly computed value.
 - **Best Practice:** Assign intermediate variables before using them.
 
 ## **Corrected order:**
+
 ```verilog
 always @ (*) begin
   x = a | b;
@@ -459,8 +463,8 @@ Here’s a **quick recap** of what we learned today:
   ❌ Non-standard/ambiguous Verilog  
 
 - **📝 Blocking vs Non-Blocking Assignments:**  
-  - `=` → Blocking, **combinational logic** ⚡️  
-  - `<=` → Non-blocking, **sequential logic** ⏱️  
+  `=` → Blocking, **combinational logic** ⚡️  
+  `<=` → Non-blocking, **sequential logic** ⏱️  
 
 - **🛠️ Labs Covered:**  
   1️⃣ **Bad MUX Demo:** Shows S-S mismatch ⚡  
