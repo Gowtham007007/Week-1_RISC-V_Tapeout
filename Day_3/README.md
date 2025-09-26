@@ -34,13 +34,13 @@ Today’s session will be filled with **optimization techniques, sequential logi
 
 | Section | Topics | Link |
 |---------|--------|------|
-| 1️⃣ Constant Propagation 🚦 | 🔹 What is Constant Propagation? <br> 🔹 How It Works <br> ⚡ Benefits in Combinational Logic <br> 🔵 Benefits in Sequential Logic <br> 📝 Examples & Diagrams | [✨ Explore](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#1-constant-propagation) |
-| 2️⃣ State Optimization 🧩 | 🔹 State Reduction Techniques <br> 🔹 State Encoding Schemes (Binary, One-Hot, Gray) <br> 🔹 Logic Minimization & Power Optimization <br> 📝 Example with 8→4 States <br> 🖼 Diagram Illustration | [🚀 Discover](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#2-state-optimization) |
-| 3️⃣ Cloning 🏗️ | 🔹 Purpose of Cloning in VLSI <br> 🔹 Steps: Identify, Duplicate, Redistribute, Place & Route <br> 📝 Example: Load Balancing in Combinational Blocks <br> ⚡ Timing Improvement | [🔍 Peek]() |
-| 4️⃣ Retiming ⏱️ | 🔹 Sequential Circuit Optimization <br> 🔹 Graph Representation of FFs & Logic <br> 🔹 Register Repositioning & Timing Analysis <br> ⚡ Example of Critical Path Shortening | [🛠️ Dive In]() |
-| 5️⃣ Labs on Optimization Techniques 🧪 | 🔹 Lab 1–4: Constant Propagation & Combinational Logic <br> 🔹 Lab 5–6: Sequential Circuits (D Flip-Flops) <br> 🔹 Netlist Generation & Waveform Analysis <br> 🖥️ Practical Verilog Examples | [💻 Inspect]() |
-| 6️⃣ Handling Unused Outputs 🗑️ | 🔹 Concept & Importance <br> 🔹 Verilog Code Examples with Unused Outputs <br> 🔹 Netlist Behavior & Optimization <br> ⚡ Summary Table: Source Code vs Netlist | [✨ Learn More]() |
-| 7️⃣ Summary & Key Learnings 📊 | 🔹 Recap of Constant Propagation, State Optimization, Cloning, Retiming, Labs, and Unused Outputs <br> 🔹 Practical Takeaways & Insights | [📘 Recap]() |
+| 1️⃣ Constant Propagation 🚦 | 🔹 What is Constant Propagation? <br> 🔹 How It Works <br> ⚡ Benefits in Combinational Logic <br> 🔵 Benefits in Sequential Logic <br> 📝 Examples & Diagrams | [✨ Explore]([https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#1-constant-propagation](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#1%EF%B8%8F%E2%83%A3-constant-propagation-)) |
+| 2️⃣ State Optimization 🧩 | 🔹 State Reduction Techniques <br> 🔹 State Encoding Schemes (Binary, One-Hot, Gray) <br> 🔹 Logic Minimization & Power Optimization <br> 📝 Example with 8→4 States <br> 🖼 Diagram Illustration | [🚀 Discover](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#2%EF%B8%8F%E2%83%A3-state-optimization-) |
+| 3️⃣ Cloning 🏗️ | 🔹 Purpose of Cloning in VLSI <br> 🔹 Steps: Identify, Duplicate, Redistribute, Place & Route <br> 📝 Example: Load Balancing in Combinational Blocks <br> ⚡ Timing Improvement | [🔍 Peek](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#3%EF%B8%8F%E2%83%A3-cloning-%EF%B8%8F) |
+| 4️⃣ Retiming ⏱️ | 🔹 Sequential Circuit Optimization <br> 🔹 Graph Representation of FFs & Logic <br> 🔹 Register Repositioning & Timing Analysis <br> ⚡ Example of Critical Path Shortening | [🛠️ Dive In](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#4%EF%B8%8F%E2%83%A3-retiming-%EF%B8%8F) |
+| 5️⃣ Labs on Optimization Techniques 🧪 | 🔹 Lab 1–4: Constant Propagation & Combinational Logic <br> 🔹 Lab 5–6: Sequential Circuits (D Flip-Flops) <br> 🔹 Netlist Generation & Waveform Analysis <br> 🖥️ Practical Verilog Examples | [💻 Inspect](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#5%EF%B8%8F%E2%83%A3-labs-on-optimization-techniques-) |
+| 6️⃣ Handling Unused Outputs 🗑️ | 🔹 Concept & Importance <br> 🔹 Verilog Code Examples with Unused Outputs <br> 🔹 Netlist Behavior & Optimization <br> ⚡ Summary Table: Source Code vs Netlist | [✨ Learn More](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#6%EF%B8%8F%E2%83%A3-handling-unused-outputs-%EF%B8%8F) |
+| 7️⃣ Summary & Key Learnings 📊 | 🔹 Recap of Constant Propagation, State Optimization, Cloning, Retiming, Labs, and Unused Outputs <br> 🔹 Practical Takeaways & Insights | [📘 Recap](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/tree/main/Day_3#7%EF%B8%8F%E2%83%A3) |
  
 
  ---
@@ -540,6 +540,7 @@ endmodule
 
 
  In the top module, unused_out from the submodule is **not connected** to anything and not used in further logic. The synthesis tool **removes any hardware** solely responsible for driving unused_out, unless forcedotherwise (some tools can drive it to zero). 
+ 
 --- 
 ## 🔹 Netlist Behavior with Unused Outputs 
  - During **netlist generation**, logic driving unused outputs is detected and typically **eliminated**, reducing gate count and optimizing area and power.
